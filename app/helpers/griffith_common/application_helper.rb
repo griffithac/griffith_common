@@ -35,8 +35,8 @@ module GriffithCommon
 
 
     def search_column_options clazz = nil
-      clazz ||= get_class params[:controller].to_s.classify
-      columns = Hash.new
+      clazz ||= get_class(params[:controller].to_s.classify)
+      columns = {}
       if clazz.respond_to? :search_columns
         clazz.search_columns.map do |title, column| 
           columns[title.to_s.titleize] = column.to_s
@@ -68,16 +68,6 @@ module GriffithCommon
 
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
-    end
-  
-
-    def search_column_options clazz = nil
-      clazz ||= get_class params[:controller].to_s.classify
-      columns = Hash.new
-      clazz.search_columns.map do |title, column| 
-        columns[title.to_s.titleize] = column.to_s
-      end
-      return columns
     end
 
 
