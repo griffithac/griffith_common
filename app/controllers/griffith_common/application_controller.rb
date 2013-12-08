@@ -9,7 +9,7 @@ module GriffithCommon
     helper_method :sort_column, :sort_direction
 
     def per_page
-      if (MIN_ROWS..MAX_ROWS).include? params[:per_page]
+      if (MIN_ROWS..MAX_ROWS).include? params[:per_page].to_i
         params[:per_page]
       else
         DEFAULT_ROWS
