@@ -1,27 +1,27 @@
 module GriffithCommon
   class ApplicationController < ActionController::Base
   
+    DEFAULT_ROWS = 25
+    MIN_ROWS     = 1
+    MAX_ROWS     = 100
+    DEFAULT_SORT = 'asc'
+
     helper_method :sort_column, :sort_direction
 
     def per_page
-      params[:per_page] ||= 25
-    end
-    
-
-    def rows_per_page
-      if params[:per_page].present?
+      if (MIN_ROWS..MAX_ROWS).include? params[:per_page]
         params[:per_page]
       else
-        per_page
+        DEFAULT_ROWS
       end
     end
 
 
-    def sort_direction starting_direction = 'asc'
+    def sort_direction direction = DEFAULT_SORT
       if %w[asc desc].include?(params[:direction])
         params[:direction]
       else
-        starting_direction
+        direction
       end
     end
 
@@ -36,16 +36,12 @@ module GriffithCommon
     
 
     def default_sort_column
-      sortable_columns.each { |column| return column if column.present? }
+      sortable_columns.compact.first
     end
 
+
     def sortable_columns
-      valid_sort_columns = []
-      columns = eval("#{params[:controller].classify}.search_columns")
-      columns.each_value do |column|
-        valid_sort_columns << column
-      end
-      valid_sort_columns
+      eval("#{params[:controller].classify}.search_columns").values 
     end
 
   end

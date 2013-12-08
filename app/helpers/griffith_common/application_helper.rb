@@ -66,41 +66,28 @@ module GriffithCommon
     end
 
 
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
-    end
-
-
     def brand_for_site
       case request.host
-      when 'localhost'
-        'Dev Mode'
-      when 'griffithind.co'
-        'Griffith'
-      when 'wslservices.co'
-        'WSL'
-      else
-        'Griffith'
-      end
-    end
-
-    def title_for_site
-      case request.host
-      when 'localhost'
-        'Dev, Inc.'
-      when 'griffithind.co'
-        'Griffith Industries, Inc.'
-      when 'wslservices.co'
-        'WSL, Inc.'
-      else
-        'Griffith Industries, Inc.'
+      when 'localhost'       then 'Development'
+      when 'griffithind.co'  then 'Griffith Industries, Inc.'
+      when 'griffithind.net' then 'Griffith Industries, Inc.'
+      when 'griffithind.com' then 'Griffith Industries, Inc.'
+      when 'wslservices.co'  then 'WSL, Inc.'
+      when 'wslservices.net' then 'WSL, Inc.'
+      when 'wslservices.com' then 'WSL, Inc.'
+      else 'Griffith Industries, Inc.'
       end
     end
 
 
     def current_page_title
-      if params[:controller].titleize.pluralize == 'Homes'
-        'WSL, Inc. - Home' else "WSL, Inc. - "  + params[:controller].titleize.pluralize 
+      case current_controller
+      when 'sessions'
+        "#{brand_for_site} - Login" 
+      when 'static_pages'
+        "#{brand_for_site} - #{current_action.titleize}"         
+      else 
+        "#{brand_for_site} - #{current_controller.titleize.pluralize}" 
       end
     end
 
@@ -149,13 +136,16 @@ module GriffithCommon
       end
     end
 
+
     def yes_no val
       val ? 'yes' : 'no'
     end
 
+
     def icon name
       "<i class='fa fa-#{name.to_s} fa-fw'></i>".html_safe
     end
+
     
     def badge count
       "<span class='badge'>#{count}</span>"
@@ -165,10 +155,12 @@ module GriffithCommon
     def index_edit_button model
       link_to( icon(:edit), eval("edit_#{model.class.to_s.underscore}_path(#{model.id})"), class: 'btn btn-default btn-xs' ) if can? :edit, model
     end
+
     
     def index_destroy_button model, message = 'Are you sure?'
       link_to( icon(:times), model, data: { confirm: message }, method: :delete, class: 'btn btn-xs btn-danger' ) if can? :delete, model
     end
+
 
     def tag_list(model)
       list = ''
@@ -177,7 +169,6 @@ module GriffithCommon
       end
       list.html_safe
     end
-
 
   
     def valid_path? path, method
@@ -188,9 +179,11 @@ module GriffithCommon
       end
     end
 
+
     def print(field)
        "<tr><th>#{field.to_s.humanize}</th><td>#{@object.send(field)}</td></tr>"
     end
+
     
     def admin_debug
       if logged_in? && current_user.admin? && current_user.full_name == 'Griffith, Andrew'
