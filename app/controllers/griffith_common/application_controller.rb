@@ -4,12 +4,16 @@ module GriffithCommon
     helper_method :sort_column, :sort_direction
 
     def per_page
-      params[:per_page] ||= 20
+      params[:per_page] ||= 25
     end
     
 
     def rows_per_page
-      %w[25 50 75 100].include?(params[:per_page]) ? params[:per_page] : per_page
+      if params[:per_page].present?
+        params[:per_page]
+      else
+        per_page
+      end
     end
 
 
@@ -23,29 +27,25 @@ module GriffithCommon
 
 
     def sort_column
-      if params[:sort].nil?
-        default_sort_column
+      if params[:sort].present? && sortable_columns.include?(params[:sort])
+        params[:sort]
       else
-        sortable_columns.include?(params[:sort]) ? params[:sort] : default_sort_column
+        default_sort_column
       end
     end
     
 
     def default_sort_column
-      if sortable_columns.first.nil?
-        sortable_columns.second
-      else
-        sortable_columns.first
-      end
+      sortable_columns.each { |column| return column if column.present? }
     end
 
-
     def sortable_columns
-      valid_sort_columns = Array.new
-      eval("#{params[:controller].classify}.search_columns").each_value do |column|
+      valid_sort_columns = []
+      columns = eval("#{params[:controller].classify}.search_columns")
+      columns.each_value do |column|
         valid_sort_columns << column
       end
-      return valid_sort_columns
+      valid_sort_columns
     end
 
   end
