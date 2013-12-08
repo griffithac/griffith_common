@@ -141,17 +141,6 @@ module GriffithCommon
       val ? 'yes' : 'no'
     end
 
-
-    def icon name
-      "<i class='fa fa-#{name.to_s} fa-fw'></i>".html_safe
-    end
-
-    
-    def badge count
-      "<span class='badge'>#{count}</span>"
-    end
-
-
     def index_edit_button model
       link_to( icon(:edit), eval("edit_#{model.class.to_s.underscore}_path(#{model.id})"), class: 'btn btn-default btn-xs' ) if can? :edit, model
     end
