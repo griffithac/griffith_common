@@ -199,6 +199,11 @@ module GriffithCommon
     end
 
     
+    def search_query_tag
+      text_field_tag :q, params[:q], placeholder: 'Enter Search Query'
+    end
+    
+
     def submit_search_tag
       button_tag(type: 'submit', class: 'btn btn-default') do
         icon(:search)
