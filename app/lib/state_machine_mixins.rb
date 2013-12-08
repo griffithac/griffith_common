@@ -1,7 +1,5 @@
-module StateMachineMixins
-  
+module StateMachineMixins  
   module Model
-    
 
     def self.included(base)
       base.class_eval do
@@ -23,6 +21,7 @@ module StateMachineMixins
       self.human_state_name.titleize
     end
 
+
     def call_event params
       if ( eval params[:event] if self.state_events.include?(params[:event].to_sym) )
         if self.respond_to? :current_user_id
@@ -32,6 +31,7 @@ module StateMachineMixins
         end
       end
     end
+
 
     def event_names
       ary = self.state_events.map { |val| [ val.to_s.titleize, val ] }
@@ -46,18 +46,23 @@ module StateMachineMixins
       html = ''
       model.state_events.each do |event|
         if eval("model.can_#{event.to_s}?")
-          html += link_to(event.to_s.titleize, eval("event_#{model.class.to_s.underscore}_path(model, event: :#{event})"), class: 'btn btn-primary')
+          path = "event_#{model.class.to_s.underscore}_path(model, event: :#{event})"
+          html += link_to(event.to_s.titleize, 
+                          eval(path), 
+                          class: 'btn btn-primary')
           html += content_tag :br
         end
       end
       html.html_safe
     end
 
+
     def state_label model
       content_tag(:div, class: state_class(model)) do 
         model.current_state 
       end
     end
+
 
     private
     
@@ -78,5 +83,4 @@ module StateMachineMixins
     end
   
   end
-
 end

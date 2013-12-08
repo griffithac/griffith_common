@@ -70,16 +70,28 @@ module GriffithCommon
     end
 
 
+    def current_app
+      case Rails.application.class.parent_name
+      when 'GriffithindCo'  then 'Griffith'
+      when 'GriffithindNet' then 'Griffith'
+      when 'GriffithindCom' then 'Griffith'
+      when 'WslservicesCo'  then 'WSL'
+      when 'WslservicesNet' then 'WSL'
+      when 'WslservicesCom' then 'WSL'
+      else 'Unknown App'
+      end
+    end
+
     def brand_for_site
       case request.host
-      when 'localhost'       then 'Development'
-      when 'griffithind.co'  then 'Griffith Industries, Inc.'
-      when 'griffithind.net' then 'Griffith Industries, Inc.'
-      when 'griffithind.com' then 'Griffith Industries, Inc.'
+      when 'localhost'       then "#{current_app} Dev"
+      when 'griffithind.co'  then 'Griffith'
+      when 'griffithind.net' then 'Griffith'
+      when 'griffithind.com' then 'Griffith'
       when 'wslservices.co'  then 'WSL, Inc.'
       when 'wslservices.net' then 'WSL, Inc.'
       when 'wslservices.com' then 'WSL, Inc.'
-      else 'Griffith Industries, Inc.'
+      else 'Unknown Site'
       end
     end
 

@@ -6,8 +6,11 @@ module GriffithCommon
       opts = {class: 'panel-default'}.merge(opts)
 
       content_tag :div, class: "panel #{opts[:class]}" do
-        concat content_tag( :div, content_tag( :h3, heading, class: 'panel-title center' ),
-                            class: 'panel-heading' )
+        concat content_tag(:div, 
+                           content_tag(:h3, 
+                                       heading, 
+                                       class: 'panel-title center'),
+                           class: 'panel-heading')
         yield
       end.html_safe
     end
