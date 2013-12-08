@@ -1,7 +1,7 @@
 module GriffithCommon
   class ApplicationController < ActionController::Base
   
-    DEFAULT_ROWS = 25
+    DEFAULT_ROWS = 20
     MIN_ROWS     = 1
     MAX_ROWS     = 100
     DEFAULT_SORT = 'asc'
