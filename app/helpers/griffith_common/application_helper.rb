@@ -1,6 +1,10 @@
 module GriffithCommon
   module ApplicationHelper
-  
+    
+    include GriffithCommon::BootstrapHelpers
+    include GriffithCommon::WillPaginateTwitterBootstrap::Helper
+
+
     def errors object
       render 'errors', object: object
     end
