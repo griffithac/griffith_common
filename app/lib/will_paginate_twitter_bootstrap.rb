@@ -1,7 +1,7 @@
 require "will_paginate/view_helpers/action_view"
 
 # custom will paginate renderer for twitter bootstrap
-module WillPaginateTwitterBootstrap
+module 
   class Renderer < WillPaginate::ActionView::LinkRenderer
     
     include BootstrapHelpers::Icon

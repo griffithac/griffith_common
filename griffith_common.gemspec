@@ -14,6 +14,7 @@ Gem::Specification.new do |s|
   s.description = "Common Code for All Griffith Apps."
 
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.md"]
+  s.require_path = 'lib'
   s.test_files = Dir["test/**/*"]
 
   # s.add_dependency "rails", "~> 4.0.2"
