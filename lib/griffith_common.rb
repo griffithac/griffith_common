@@ -2,6 +2,7 @@ require "griffith_common/engine"
 require "griffith_common/table_builder"
 require "griffith_common/calender_builder"
 require "griffith_common/list_table_builder"
+require 'griffith_common/state_machine_mixins'
 
 module GriffithCommon
   ActionView::Base.send :include, GriffithCommon::TableBuilder
