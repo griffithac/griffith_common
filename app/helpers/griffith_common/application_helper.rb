@@ -1,8 +1,8 @@
 module GriffithCommon
   module ApplicationHelper
     
-    include BootstrapHelpers
-    include WillPaginateTwitterBootstrap::Helper
+    include GriffithCommon::BootstrapHelpers
+    include GriffithCommon::WillPaginateTwitterBootstrap::Helper
 
 
     def errors object
