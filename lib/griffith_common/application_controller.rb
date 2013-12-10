@@ -1,4 +1,4 @@
-module GriffithCommonFull
+module GriffithCommon
   module ApplicationController #< ActionController::Base
   
     DEFAULT_ROWS = 20

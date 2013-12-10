@@ -1,4 +1,4 @@
-module GriffithCommonFull
+module GriffithCommon
   module BootstrapHelpers
     
     def panel_for heading, opts = {}

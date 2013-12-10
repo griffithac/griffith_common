@@ -1,4 +1,4 @@
-module GriffithCommonFull
+module GriffithCommon
   module TableBuilder
 
     def table_for(objects, *args)

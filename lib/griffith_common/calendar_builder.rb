@@ -1,4 +1,4 @@
-module GriffithCommonFull
+module GriffithCommon
   module CalendarBuilder
     # Generates a calendar (as a table) for an array of objects placing each of them on the corresponding date.
     #

@@ -1,4 +1,4 @@
-module GriffithCommonFull
+module GriffithCommon
   module ListTableBuilder
     
     ## add instance methods to class

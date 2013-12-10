@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    griffith_common_full (0.0.1)
+    griffith_common (0.0.1)
       rails (~> 4.0.2)
 
 GEM
@@ -84,5 +84,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  griffith_common_full!
+  griffith_common!
   sqlite3

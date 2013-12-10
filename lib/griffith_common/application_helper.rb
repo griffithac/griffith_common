@@ -1,18 +1,18 @@
-require 'griffith_common_full/table_builder'
-require 'griffith_common_full/calendar_builder'
-require 'griffith_common_full/list_table_builder'
-require 'griffith_common_full/bootstrap_helpers'
-require 'griffith_common_full/will_paginate_twitter_bootstrap'
+require 'griffith_common/table_builder'
+require 'griffith_common/calendar_builder'
+require 'griffith_common/list_table_builder'
+require 'griffith_common/bootstrap_helpers'
+require 'griffith_common/will_paginate_twitter_bootstrap'
 
 
-module GriffithCommonFull
+module GriffithCommon
   module ApplicationHelper
     
-    include GriffithCommonFull::TableBuilder
-    include GriffithCommonFull::CalendarBuilder
-    include GriffithCommonFull::ListTableBuilder
-    include GriffithCommonFull::BootstrapHelpers
-    include GriffithCommonFull::WillPaginateTwitterBootstrap::Helper
+    include GriffithCommon::TableBuilder
+    include GriffithCommon::CalendarBuilder
+    include GriffithCommon::ListTableBuilder
+    include GriffithCommon::BootstrapHelpers
+    include GriffithCommon::WillPaginateTwitterBootstrap::Helper
 
 
     def errors object
