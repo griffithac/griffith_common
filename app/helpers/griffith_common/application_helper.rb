@@ -113,7 +113,10 @@ module GriffithCommon
     end
 
     def index_destroy_button model, message = 'Are you sure?'
-      link_to( icon(:times), model, data: { confirm: message }, method: :delete, class: 'btn btn-xs btn-danger' ) if can? :delete, model
+      link_to( icon(:times), model, data: { confirm: message }, 
+                                    method: :delete, 
+                                    class: 'btn btn-xs btn-danger' ) 
+                                    if can? :delete, model
     end
 
     def tag_list(model)
@@ -129,7 +132,11 @@ module GriffithCommon
     end
  
     def remove_button model
-      link_to icon(:times), model, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-xs btn-danger', style: 'margin-left: 12px;', remote: true
+      link_to icon(:times), model, data: { confirm: 'Are you sure?' }, 
+                                   method: :delete, 
+                                   class: 'btn btn-xs btn-danger', 
+                                   style: 'margin-left: 12px;', 
+                                   remote: true
     end
 
     ## Payroll Helper
@@ -158,12 +165,16 @@ module GriffithCommon
     end
 
     def index_edit_button model
-      link_to( icon(:edit), eval("edit_#{model.class.to_s.underscore}_path(#{model.id})"), class: 'btn btn-default btn-xs' ) if can? :edit, model
+      link_to( icon(:edit), eval("edit_#{model.class.to_s.underscore}_path(#{model.id})"), 
+                            class: 'btn btn-default btn-xs' ) if can? :edit, model
     end
 
     
     def index_destroy_button model, message = 'Are you sure?'
-      link_to( icon(:times), model, data: { confirm: message }, method: :delete, class: 'btn btn-xs btn-danger' ) if can? :delete, model
+      link_to( icon(:times), model, data: { confirm: message }, 
+                                    method: :delete, 
+                                    class: 'btn btn-xs btn-danger' ) 
+                                    if can? :delete, model
     end
 
 
