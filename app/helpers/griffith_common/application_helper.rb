@@ -58,15 +58,21 @@ module GriffithCommon
       
       label ||= title.to_s.titleize
       
-      css_class = 
-        column.to_s == sort_column.to_s ? "current #{sort_direction}" : nil
+      css_class = if column.to_s == sort_column.to_s
+        "current #{sort_direction}" 
+      else 
+        nil
+      end
 
-      direction = 
-        column.to_s == sort_column.to_s && sort_direction == "asc" ? "desc" : "asc"
-      
-      link_to label, params.merge( sort:      column, 
-                                   direction: direction, 
-                                   page:      nil), { class: css_class }
+      direction = if column.to_s == sort_column.to_s && sort_direction == "asc" 
+        "desc"
+      else 
+        "asc"
+      end
+
+      link_to label, params.merge(sort:      column, 
+                                  direction: direction, 
+                                  page:      nil), { class: css_class }
     end
 
 
@@ -81,6 +87,7 @@ module GriffithCommon
       else 'Unknown App'
       end
     end
+
 
     def brand_for_site
       case request.host
@@ -109,15 +116,22 @@ module GriffithCommon
 
 
     def index_edit_button model
-      link_to( icon(:edit), eval("edit_#{model.class.to_s.underscore}_path(#{model.id})"), class: 'btn btn-default btn-xs' ) if can? :edit, model
+      if can? :edit, model
+        link_to(icon(:edit), 
+                eval("edit_#{model.class.to_s.underscore}_path(#{model.id})"), 
+                class: 'btn btn-default btn-xs') 
+      end
     end
 
+
     def index_destroy_button model, message = 'Are you sure?'
-      link_to( icon(:times), model, data: { confirm: message }, 
-                                    method: :delete, 
-                                    class: 'btn btn-xs btn-danger' ) 
-                                    if can? :delete, model
+      if can? :delete, model
+        link_to( icon(:times), model, data: { confirm: message }, 
+                                      method: :delete, 
+                                      class: 'btn btn-xs btn-danger' )
+      end
     end
+
 
     def tag_list(model)
       list = ''
@@ -127,9 +141,11 @@ module GriffithCommon
       list.html_safe
     end
 
+
     def add_button
-      button_tag type: :submit, class: 'btn btn-primary' do icon(:plus) end
+      button_tag(type: :submit, class: 'btn btn-primary') { icon(:plus) }
     end
+
  
     def remove_button model
       link_to icon(:times), model, data: { confirm: 'Are you sure?' }, 
@@ -139,17 +155,23 @@ module GriffithCommon
                                    remote: true
     end
 
-    ## Payroll Helper
 
+    ## Payroll Helper
     def formatted_rate pay_rate
-      PayRate.rate_types[pay_rate.rate_type] == :amount ? number_to_currency( pay_rate.rate ) : number_to_percentage( pay_rate.rate, precision: 2 )
+      if PayRate.rate_types[pay_rate.rate_type] == :amount
+        number_to_currency(pay_rate.rate)
+      else
+        number_to_percentage(pay_rate.rate, precision: 2)
+      end
     end
+
 
     def hours_mins mins # Pretty print time in hours and mins
       hours = (mins / 60)
       min  = mins % 60
       "#{hours}:#{min.to_s.rjust(2,'0')}"
     end
+
 
     def full_address address
       content_tag :div do
@@ -164,17 +186,24 @@ module GriffithCommon
       val ? 'yes' : 'no'
     end
 
+
     def index_edit_button model
-      link_to( icon(:edit), eval("edit_#{model.class.to_s.underscore}_path(#{model.id})"), 
-                            class: 'btn btn-default btn-xs' ) if can? :edit, model
+      if can? :edit, model
+        link_to(icon(:edit), 
+                eval("edit_#{model.class.to_s.underscore}_path(#{model.id})"), 
+                class: 'btn btn-default btn-xs' )
+      end
     end
 
     
     def index_destroy_button model, message = 'Are you sure?'
-      link_to( icon(:times), model, data: { confirm: message }, 
-                                    method: :delete, 
-                                    class: 'btn btn-xs btn-danger' ) 
-                                    if can? :delete, model
+      if can? :delete, model
+        link_to(icon(:times), 
+                model, 
+                data: { confirm: message }, 
+                method: :delete,
+                class: 'btn btn-xs btn-danger') 
+      end
     end
 
 
@@ -202,7 +231,10 @@ module GriffithCommon
 
     
     def admin_debug
-      if logged_in? && current_user.admin? && current_user.full_name == 'Griffith, Andrew'
+      if logged_in? && 
+         current_user.admin? && 
+         current_user.full_name == 'Griffith, Andrew'
+      then
         debug(params) +
         debug(eval("@#{params[:controller].downcase.singularize}")) +
         debug(eval("@#{params[:controller].downcase.pluralize}"))
@@ -226,7 +258,7 @@ module GriffithCommon
 
     def get_class target_clazz
       ActiveRecord::Base.subclasses.each do |clazz|
-       if clazz.to_s == target_clazz then
+       if clazz.to_s == target_clazz
          return clazz
        end
       end    
