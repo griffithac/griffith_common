@@ -4,7 +4,7 @@ require "will_paginate/view_helpers/action_view"
 module WillPaginateTwitterBootstrap
   class Renderer < WillPaginate::ActionView::LinkRenderer
     
-    include GriffithCommon::BootstrapHelpers::Icon
+    include BootstrapHelpers::Icon
 
     ELLIPSIS = '&hellip;'
 
@@ -82,14 +82,14 @@ module WillPaginateTwitterBootstrap
         options, collection_or_options = collection_or_options, nil
       end
       unless options[:renderer]
-        options = options.merge renderer: GriffithCommon::WillPaginateTwitterBootstrap::Renderer, 
+        options = options.merge renderer: WillPaginateTwitterBootstrap::Renderer, 
                                 class:    'text-center'
       end
       super *[collection_or_options, options].compact
     end
  
     def ajax_will_paginate(collection, options = {})
-      will_paginate(collection, options.merge( renderer: GriffithCommon::WillPaginateTwitterBootstrap::AjaxRenderer, 
+      will_paginate(collection, options.merge( renderer: WillPaginateTwitterBootstrap::AjaxRenderer, 
                                                class:    'text-center' ) )
     end
 
