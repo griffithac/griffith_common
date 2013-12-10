@@ -1,0 +1,14 @@
+= form_tag eval("#{params[:controller]}_path"), method: 'get', class: 'form-inline' do
+  .row.inline-form-row
+    = hidden_field_tag :direction, params[:direction]
+    = hidden_field_tag :sort, params[:sort]  
+    .col-md-4.col-sm-5.inline-form-input
+      .input-group
+        .input-group-addon
+          Search by  
+        = select_tag :field, options_for_select(search_column_options, selected: params[:field])
+    .col-md-8.col-sm-7.inline-form-input
+      .input-group
+        = search_query_tag
+        .input-group-btn
+          = submit_search_tag
