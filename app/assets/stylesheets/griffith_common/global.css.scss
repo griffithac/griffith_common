@@ -1,0 +1,65 @@
+// remove link style from rowlink within td
+td.rowlink a {
+  color: black;
+}
+
+body { padding-bottom: 70px; }
+
+
+// alignment helpers
+.right { text-align: right; }
+.left { text-align: left; }
+.center { text-align: center; }
+
+
+
+// inline form row classes
+.inline-form-row {
+  padding: 0;
+  height: 49px;
+  margin-right: -7.5px;
+  margin-left: -7.5px;
+}
+
+.inline-form-header-row {
+  padding: 0;
+  margin-right: -7.5px;
+  margin-left: -7.5px;
+  margin-bottom: 6px;
+}
+
+.row-group {
+  padding: 0px;
+  margin: 0px;
+}
+
+.inline-form-input {
+  padding-right: 7.5px;
+  padding-left: 7.5px;
+
+  // override normal css for inputs
+  .form-group .form-input {
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+}
+
+.inline-form-label {
+  padding-right: 7.5px;
+  padding-left: 7.5px;
+  margin-right: 3px;
+}
+
+.btn-add-row {
+  margin-bottom: 12px;
+}
+
+.date-time-input-group {
+  div { 
+    padding-right: 15px; 
+  }
+  input { 
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+}
