@@ -1,5 +1,5 @@
-require 'griffith_common/application_helper.rb'
-require 'griffith_common/application_controller.rb'
+require 'application_helper'
+require 'application_controller'
 
 module GriffithCommon
   class Engine < ::Rails::Engine 
