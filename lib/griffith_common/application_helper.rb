@@ -7,9 +7,12 @@ module GriffithCommon
     include GriffithCommon::BootstrapHelpers
     include GriffithCommon::WillPaginateTwitterBootstrap::Helper
 
+    
+    # used in testing to check to this file has been loaded
     def gem_loaded?
       true
     end
+
 
     def errors object
       render 'errors', object: object
