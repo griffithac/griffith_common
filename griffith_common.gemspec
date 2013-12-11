@@ -13,9 +13,15 @@ Gem::Specification.new do |s|
   s.summary     = "Summary of GriffithCommon."
   s.description = "Description of GriffithCommon."
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
 
+  s.files         = `git ls-files`.split("\n")
+  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+
+  s.require_paths = ["lib"]
+
+  s.required_ruby_version = '~> 2.0'
+  
   # s.add_dependency "rails", "~> 4.0.2"
 
   s.add_dependency "will_paginate", '~> 3.0.3'
