@@ -1,0 +1,27 @@
+= render layout: 'action_bar_blank' do
+  - if current_action == "index" && can?(:create,  current_model.classify.constantize)
+    .col-md-2.button-group-left
+      = link_to "New #{current_model.titleize}", eval("new_#{current_model}_path"), :method => :get, class: 'btn btn-primary'
+      = yield
+    = render 'pagination_bar'
+
+  - else
+    .col-md-2.button-group-left
+      - if controller == "home"
+      - elsif controller == "sessions"
+        = submit_tag 'Login', class: 'btn btn-primary'
+      - else
+        - case current_action
+          - when 'new' 
+            = submit_tag "Create #{current_model.titleize}", class: 'btn btn-primary' if can? :create, eval("@#{current_model}")
+          - when 'create' 
+            = submit_tag "Create #{current_model.titleize}", class: 'btn btn-primary' if can? :create, eval("@#{current_model}")
+          - when 'edit'
+            = submit_tag "Update #{current_model.titleize}", class: 'btn btn-primary' if can? :update, eval("@#{current_model}")
+          - when 'update'
+            = submit_tag "Update #{current_model.titleize}", class: 'btn btn-primary' if can? :update, eval("@#{current_model}")
+          - when 'show'
+            = link_to "Edit #{current_model.titleize}", eval( "edit_#{current_model}_path @#{current_model}" ), class: 'btn btn-primary' if can? :create, eval("@#{current_model}")
+      = yield if block_given?
+      = render 'back_buttons'
+    = render 'pagination_bar'
