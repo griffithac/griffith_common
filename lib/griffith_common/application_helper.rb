@@ -23,6 +23,20 @@ module GriffithCommon
       params[:controller].singularize
     end
     
+    
+    def current_model_title title = nil
+      unless title
+        params[:controller].singularize.titleize
+      else
+        title
+      end
+    end
+
+
+    def current_model_class
+      params[:controller].classify.constantize
+    end
+
 
     def current_controller
       params[:controller]
