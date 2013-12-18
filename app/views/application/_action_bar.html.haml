@@ -1,7 +1,7 @@
 = render layout: 'action_bar_blank' do
   - if current_action == "index" && can?(:create,  current_model.classify.constantize)
     .col-md-2.button-group-left
-      = link_to "New #{current_model_title}", eval("new_#{current_model}_path"), :method => :get, class: 'btn btn-primary'
+      = link_to "New #{current_model_title(title ||= nil)}", eval("new_#{current_model}_path"), :method => :get, class: 'btn btn-primary'
       = yield
     = render 'pagination_bar'
 
@@ -13,15 +13,15 @@
       - else
         - case current_action
           - when 'new' 
-            = submit_tag "Create #{current_model_title}", class: 'btn btn-primary' if can? :create, current_model_class
+            = submit_tag "Create #{current_model_title(title ||= nil)}", class: 'btn btn-primary' if can? :create, current_model_class
           - when 'create' 
-            = submit_tag "Create #{current_model_title}", class: 'btn btn-primary' if can? :create, current_model_class
+            = submit_tag "Create #{current_model_title(title ||= nil)}", class: 'btn btn-primary' if can? :create, current_model_class
           - when 'edit'
-            = submit_tag "Update #{current_model_title}", class: 'btn btn-primary' if can? :update, current_model_class
+            = submit_tag "Update #{current_model_title(title ||= nil)}", class: 'btn btn-primary' if can? :update, current_model_class
           - when 'update'
-            = submit_tag "Update #{current_model_title}", class: 'btn btn-primary' if can? :update, current_model_class
+            = submit_tag "Update #{current_model_title(title ||= nil)}", class: 'btn btn-primary' if can? :update, current_model_class
           - when 'show'
-            = link_to "Edit #{current_model_title}", eval( "edit_#{current_model}_path @#{current_model}" ), class: 'btn btn-primary' if can? :create, current_model_class
+            = link_to "Edit #{current_model_title(title ||= nil)}", eval( "edit_#{current_model}_path @#{current_model}" ), class: 'btn btn-primary' if can? :create, current_model_class
       = yield if block_given?
-      = render 'back_buttons'
+      = render 'back_buttons', title: title ||= nil
     = render 'pagination_bar'

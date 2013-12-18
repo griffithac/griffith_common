@@ -5,6 +5,12 @@ td.rowlink a {
 
 body { padding-bottom: 70px; }
 
+// add row color for notice
+.notice {
+  border-color: #bce8f1;
+  background-color: #f4f8fa
+}
+
 
 // alignment helpers
 .right { text-align: right; }
@@ -61,4 +67,44 @@ body { padding-bottom: 70px; }
     margin-right: 15px;
     margin-left: 15px;
   }
+}
+
+// Add support for total row border
+table tbody tr.total-row th, table tbody tr.total-row td,  { 
+  border-top: 5px double #ddd
+}
+
+/* Disabled Links */
+a.disabled-link,
+a.disabled-link:visited ,
+a.disabled-link:active,
+a.disabled-link:hover {
+  color: #484848 !important;
+  pointer-events: none;
+  cursor: default;
+}
+
+// Disable Table Cell
+.disable-cell, .disable-cell:hover {
+ background-color: #fafafa
+}
+
+// file upload
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 999px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background: red;
+    cursor: inherit;
+    display: block;
 }

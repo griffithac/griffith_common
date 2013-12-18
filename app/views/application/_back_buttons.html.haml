@@ -2,5 +2,5 @@
   = link_to "Home", root_path, class: 'btn btn-default'
 - else 
   - if can?(:read, current_model_class) && valid_path?(eval("#{current_controller}_path"), :get)
-    = link_to "#{current_model_title} Listing",  eval("#{current_controller}_path"), class: 'btn btn-default' unless current_controller == 'sessions'
+    = link_to "#{current_model_title(title ||= nil)} Listing",  eval("#{current_controller}_path"), class: 'btn btn-default' unless current_controller == 'sessions'
   = link_to "Back", request.referer, class: 'btn btn-default'
