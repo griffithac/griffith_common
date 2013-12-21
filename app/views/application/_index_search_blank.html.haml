@@ -1,0 +1,5 @@
+= form_tag eval("#{params[:controller]}_path"), method: 'get', class: 'form-inline' do
+  .row.inline-form-row
+    = hidden_field_tag :direction, params[:direction]
+    = hidden_field_tag :sort, params[:sort]  
+    = yield
