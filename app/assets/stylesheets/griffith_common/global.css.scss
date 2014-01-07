@@ -16,7 +16,10 @@ body { padding-bottom: 70px; }
 .right { text-align: right; }
 .left { text-align: left; }
 .center { text-align: center; }
-
+.justify {
+ text-align: justify; 
+ text-justify: inter-word; //ie only
+}
 
 
 // inline form row classes
