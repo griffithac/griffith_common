@@ -77,7 +77,9 @@ module GriffithCommon
 
     def sortable title, label = nil
       column = 
-        get_class(params[:controller].to_s.classify).search_columns[title.to_sym]
+        get_class(
+          params[:controller].to_s.classify
+        ).search_columns[title.to_sym]
       
       label ||= title.to_s.titleize
       
@@ -100,27 +102,21 @@ module GriffithCommon
 
 
     def current_app
-      case Rails.application.class.parent_name
-      when 'GriffithindCo'  then 'Griffith'
-      when 'GriffithindNet' then 'Griffith'
-      when 'GriffithindCom' then 'Griffith'
-      when 'WslservicesCo'  then 'WSL'
-      when 'WslservicesNet' then 'WSL'
-      when 'WslservicesCom' then 'WSL'
+      app = Rails.application.class.parent_name 
+      case
+      when app.match 'Griffith'    then 'Griffith'
+      when app.match 'Wslservices' then 'WSL'
       else 'Unknown App'
       end
     end
 
 
     def brand_for_site
-      case request.host
-      when 'localhost'       then "#{current_app} Dev"
-      when 'griffithind.co'  then 'Griffith'
-      when 'griffithind.net' then 'Griffith'
-      when 'griffithind.com' then 'Griffith'
-      when 'wslservices.co'  then 'WSL, Inc.'
-      when 'wslservices.net' then 'WSL, Inc.'
-      when 'wslservices.com' then 'WSL, Inc.'
+      host = request.host
+      case
+      when host.match 'localhost'   then "#{current_app} Dev"
+      when host.match 'griffithind' then 'Griffith'
+      when host.match 'wslservices' then 'WSL, Inc.'
       else 'Unknown Site'
       end
     end
