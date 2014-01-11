@@ -48,19 +48,6 @@ module GriffithCommon
     end
 
 
-    def submit_search_tag
-      button_tag(type: 'submit', class: 'btn btn-default') do
-        icon(:search)
-      end
-    end
-
-
-    def full_text_search_tag
-      text_field_tag :q, params[:q], class: 'search-query', 
-                                     placeholder: 'Full Text Search'
-    end
-
-
     def search_column_options clazz = nil
       clazz ||= get_class(params[:controller].to_s.classify)
       columns = {}
@@ -261,8 +248,9 @@ module GriffithCommon
     end
 
     
-    def search_query_tag
-      text_field_tag :q, params[:q], placeholder: 'Enter Search Query'
+    def search_query_tag opts = {}
+      opts = { placeholder: 'Enter Search Query' }.merge(opts)
+      text_field_tag :q, params[:q], placeholder: opts[:placeholder]
     end
     
 
@@ -272,6 +260,11 @@ module GriffithCommon
       end
     end
 
+    def full_text_search_tag opts = {}
+      opts = { placeholder: 'Full Text Search' }.merge(opts)
+      text_field_tag :q, params[:q], class: 'search-query', 
+                                     placeholder: opts[:placeholder]
+    end
 
     private
 
