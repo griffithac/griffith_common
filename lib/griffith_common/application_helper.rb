@@ -91,8 +91,8 @@ module GriffithCommon
     def current_app
       app = Rails.application.class.parent_name 
       case
-      when app.match 'Griffith'    then 'Griffith'
-      when app.match 'Wslservices' then 'WSL'
+      when app.match('Griffith')    then 'Griffith'
+      when app.match('Wslservices') then 'WSL'
       else 'Unknown App'
       end
     end
@@ -101,9 +101,9 @@ module GriffithCommon
     def brand_for_site
       host = request.host
       case
-      when host.match 'localhost'   then "#{current_app} Dev"
-      when host.match 'griffithind' then 'Griffith'
-      when host.match 'wslservices' then 'WSL, Inc.'
+      when host.match('localhost')   then "#{current_app} Dev"
+      when host.match('griffithind') then 'Griffith'
+      when host.match('wslservices') then 'WSL, Inc.'
       else 'Unknown Site'
       end
     end
