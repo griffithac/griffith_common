@@ -1,7 +1,7 @@
 - if /index/ =~ params[:action] && @view_type != 'Calendar' then
-  .col-md-8
+  .col-md-6
     = eval("will_paginate @#{collection ||= params[:controller].pluralize}, inner_window: 1, outer_window: 1")
-  .col-md-2.right
+  .col-md-3.right
     .btn-group.dropup
       %button.btn.btn-default.dropdown-toggle{ href: "#", data: {toggle: "dropdown"} }
         Per Page

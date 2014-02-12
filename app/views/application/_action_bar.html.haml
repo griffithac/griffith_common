@@ -1,12 +1,12 @@
 = render layout: 'action_bar_blank' do
   - if current_action == "index" && can?(:create,  current_model.classify.constantize)
-    .col-md-2.button-group-left
+    .col-md-3.button-group-left
       = link_to "New #{current_model_title(title ||= nil)}", eval("new_#{current_model}_path"), :method => :get, class: 'btn btn-primary'
       = yield
     = render 'pagination_bar'
 
   - else
-    .col-md-2.button-group-left
+    .col-md-3.button-group-left
       - if controller == "home"
       - elsif controller == "sessions"
         = submit_tag 'Login', class: 'btn btn-primary'
