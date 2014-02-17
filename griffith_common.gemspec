@@ -24,10 +24,10 @@ Gem::Specification.new do |s|
   
   # s.add_dependency "rails", "~> 4.0.2"
 
-  s.add_dependency 'will_paginate', '~> 3.0.3'
-  s.add_dependency 'sass-rails', '>= 3.2'
-  s.add_dependancy 'bootstrap-sass', '~> 3.1.1'
-  s.add_dependancy 'font-awesome-sass'
+  s.add_runtime_dependency 'will_paginate', '~> 3.0.3'
+  s.add_runtime_dependency 'sass-rails', '>= 3.2'
+  s.add_runtime_dependancy 'bootstrap-sass', '~> 3.1.1'
+  s.add_runtime_dependancy 'font-awesome-sass'
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "pry"
