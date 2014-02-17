@@ -1,0 +1,38 @@
+////////////////////////
+// Pagination Classes //
+////////////////////////
+
+.pagination {
+  float: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: 28px;
+  
+  a {
+   line-height: 26px;
+  }
+}
+
+
+div.pagination {
+  @extend .text-center
+}
+
+h1 {
+  @extend .page-header
+}
+
+.index-btn { 
+  text-align: right;
+  white-space: nowrap;
+}
+
+.button-group-left {
+  text-align: left;
+  white-space: nowrap;  
+}
+
+.button-group-right {
+  text-align: right;
+  white-space: nowrap;  
+}

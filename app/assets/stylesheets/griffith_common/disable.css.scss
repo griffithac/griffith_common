@@ -1,0 +1,15 @@
+/////////////////////
+// Disable Classes //
+/////////////////////
+
+a.disabled-link,
+a.disabled-link:visited ,
+a.disabled-link:active,
+a.disabled-link:hover { color: #484848 !important;
+  pointer-events: none;
+  cursor: default;
+}
+
+.disable-cell, .disable-cell:hover {
+ background-color: #fafafa
+}

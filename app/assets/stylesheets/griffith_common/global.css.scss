@@ -1,28 +1,30 @@
-// remove link style from rowlink within td
-td.rowlink a {
-  color: black;
-}
+//@import 'bootstrap_simple_form';
+@import 'pagination';
+@import 'alignment';
+@import 'inputs';
+@import 'rowlink';
+@import 'file_upload';
+@import 'disable';
 
-body { padding-bottom: 70px; }
+body { 
+  padding-bottom: 70px; 
+  padding-top: 80px;
+}
 
 // add row color for notice
 .notice {
   border-color: #bce8f1;
-  background-color: #f4f8fa
+  background-color: #f4f8fa;
 }
 
+/////////////////////////////
+// Inline Form Row Classes //
+/////////////////////////////
 
-// alignment helpers
-.right { text-align: right; }
-.left { text-align: left; }
-.center { text-align: center; }
-.justify {
- text-align: justify; 
- text-justify: inter-word; //ie only
-}
+// NOT SURE ABOUT THESE TWO LINES
+.form-row, .btn-add-row { margin-bottom: 6px; }
+.btn-add-row { margin-bottom: 18px; }
 
-
-// inline form row classes
 .inline-form-row {
   padding: 0;
   height: 49px;
@@ -46,11 +48,10 @@ body { padding-bottom: 70px; }
   padding-right: 7.5px;
   padding-left: 7.5px;
 
-  // override normal css for inputs
-  .form-group .form-input {
-    margin-right: 15px;
-    margin-left: 15px;
-  }
+// override normal css for inputs
+.form-group .form-input {
+  margin-right: 15px;
+  margin-left: 15px; }
 }
 
 .inline-form-label {
@@ -72,22 +73,12 @@ body { padding-bottom: 70px; }
   }
 }
 
-// Add support for total row border
+
+//////////////////////////////////////
+// Add support for total row border //
+//////////////////////////////////////
+
 table tbody tr.total-row th, table tbody tr.total-row td,  { 
   border-top: 5px double #ddd
 }
 
-/* Disabled Links */
-a.disabled-link,
-a.disabled-link:visited ,
-a.disabled-link:active,
-a.disabled-link:hover {
-  color: #484848 !important;
-  pointer-events: none;
-  cursor: default;
-}
-
-// Disable Table Cell
-.disable-cell, .disable-cell:hover {
- background-color: #fafafa
-}
