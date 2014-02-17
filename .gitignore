@@ -25,3 +25,6 @@ rerun.txt
 pickle-email-*.html
 .project
 config/initializers/secret_token.rb
+*.swp
+
+.griffith_common.gemspec.swp
