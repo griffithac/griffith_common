@@ -1,0 +1,18 @@
+////////////////////
+// Status Classes //
+////////////////////
+
+.past-due {
+  color: $brand-danger;
+}
+
+.completed {
+  color: $brand-success;
+}
+
+// should probably use bs vars here
+.notice {
+  border-color: #bce8f1;
+  background-color: #f4f8fa;
+}
+

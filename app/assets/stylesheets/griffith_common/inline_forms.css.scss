@@ -1,24 +1,3 @@
-// Gems
-@import 'bootstrap';
-@import 'font-awesome';
-
-// Internal
-@import 'bootstrap_simple_form';
-@import 'bootstrap_tabs';
-@import 'pagination';
-@import 'alignment';
-@import 'inputs';
-@import 'rowlink';
-@import 'file_upload';
-@import 'disable';
-@import 'status';
-
-
-body { 
-  padding-bottom: 70px; 
-  padding-top: 80px;
-}
-
 /////////////////////////////
 // Inline Form Row Classes //
 /////////////////////////////
@@ -76,11 +55,4 @@ body {
 }
 
 
-//////////////////////////////////////
-// Add support for total row border //
-//////////////////////////////////////
-
-table tbody tr.total-row th, table tbody tr.total-row td,  { 
-  border-top: 5px double #ddd
-}
 
