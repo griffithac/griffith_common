@@ -1,5 +1,3 @@
-
-
 module GriffithCommon
 
   if defined?(Rails)
