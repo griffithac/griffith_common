@@ -1,5 +1,5 @@
 module GriffithCommon
-  module FormatingHelpers
+  module FormattingHelpers
 
     def currency number
       number_to_currency(number, :unit => "",
