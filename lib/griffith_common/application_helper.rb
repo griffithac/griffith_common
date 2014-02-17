@@ -1,13 +1,13 @@
 module GriffithCommon
   module ApplicationHelper
-    
+
     include GriffithCommon::TableBuilder
     include GriffithCommon::CalendarBuilder
     include GriffithCommon::ListTableBuilder
     include GriffithCommon::BootstrapHelpers
     include GriffithCommon::WillPaginateTwitterBootstrap::Helper
+    include FormattingHelpers
 
-    
     # used in testing to check to this file has been loaded
     def gem_loaded?
       true
@@ -22,8 +22,8 @@ module GriffithCommon
     def current_model
       params[:controller].singularize
     end
-    
-    
+
+
     def current_model_title title = nil
       unless title
         params[:controller].singularize.titleize
@@ -52,7 +52,7 @@ module GriffithCommon
       clazz ||= get_class(params[:controller].to_s.classify)
       columns = {}
       if clazz.respond_to? :search_columns
-        clazz.search_columns.map do |title, column| 
+        clazz.search_columns.map do |title, column|
           columns[title.to_s.titleize] = column.to_s
         end
       else
@@ -63,33 +63,33 @@ module GriffithCommon
 
 
     def sortable title, label = nil
-      column = 
+      column =
         get_class(
           params[:controller].to_s.classify
         ).search_columns[title.to_sym]
-      
+
       label ||= title.to_s.titleize
-      
+
       css_class = if column.to_s == sort_column.to_s
-        "current #{sort_direction}" 
-      else 
+        "current #{sort_direction}"
+      else
         nil
       end
 
-      direction = if column.to_s == sort_column.to_s && sort_direction == "asc" 
+      direction = if column.to_s == sort_column.to_s && sort_direction == "asc"
         "desc"
-      else 
+      else
         "asc"
       end
 
-      link_to label, params.merge(sort:      column, 
-                                  direction: direction, 
+      link_to label, params.merge(sort:      column,
+                                  direction: direction,
                                   page:      nil), { class: css_class }
     end
 
 
     def current_app
-      app = Rails.application.class.parent_name 
+      app = Rails.application.class.parent_name
       case
       when app.match('Griffith')    then 'Griffith'
       when app.match('Wslservices') then 'WSL'
@@ -112,28 +112,28 @@ module GriffithCommon
     def current_page_title
       case current_controller
       when 'sessions'
-        "#{brand_for_site} - Login" 
+        "#{brand_for_site} - Login"
       when 'static_pages'
-        "#{brand_for_site} - #{current_action.titleize}"         
-      else 
-        "#{brand_for_site} - #{current_controller.titleize.pluralize}" 
+        "#{brand_for_site} - #{current_action.titleize}"
+      else
+        "#{brand_for_site} - #{current_controller.titleize.pluralize}"
       end
     end
 
 
     def index_edit_button model
       if can? :edit, model
-        link_to(icon(:edit), 
-                eval("edit_#{model.class.to_s.underscore}_path(#{model.id})"), 
-                class: 'btn btn-default btn-xs') 
+        link_to(icon(:edit),
+                eval("edit_#{model.class.to_s.underscore}_path(#{model.id})"),
+                class: 'btn btn-default btn-xs')
       end
     end
 
 
     def index_destroy_button model, message = 'Are you sure?'
       if can? :delete, model
-        link_to( icon(:times), model, data: { confirm: message }, 
-                                      method: :delete, 
+        link_to( icon(:times), model, data: { confirm: message },
+                                      method: :delete,
                                       class: 'btn btn-xs btn-danger' )
       end
     end
@@ -142,7 +142,7 @@ module GriffithCommon
     def tag_list(model)
       list = ''
       model.tags.map(&:name).each do |item|
-        list += "<span class='label label-info'>#{icon(:tag)} #{item}</span> " 
+        list += "<span class='label label-info'>#{icon(:tag)} #{item}</span> "
       end
       list.html_safe
     end
@@ -152,12 +152,12 @@ module GriffithCommon
       button_tag(type: :submit, class: 'btn btn-primary') { icon(:plus) }
     end
 
- 
+
     def remove_button model
-      link_to icon(:times), model, data: { confirm: 'Are you sure?' }, 
-                                   method: :delete, 
-                                   class: 'btn btn-xs btn-danger', 
-                                   style: 'margin-left: 12px;', 
+      link_to icon(:times), model, data: { confirm: 'Are you sure?' },
+                                   method: :delete,
+                                   class: 'btn btn-xs btn-danger',
+                                   style: 'margin-left: 12px;',
                                    remote: true
     end
 
@@ -195,20 +195,20 @@ module GriffithCommon
 
     def index_edit_button model
       if can? :edit, model
-        link_to(icon(:edit), 
-                eval("edit_#{model.class.to_s.underscore}_path(#{model.id})"), 
+        link_to(icon(:edit),
+                eval("edit_#{model.class.to_s.underscore}_path(#{model.id})"),
                 class: 'btn btn-default btn-xs' )
       end
     end
 
-    
+
     def index_destroy_button model, message = 'Are you sure?'
       if can? :delete, model
-        link_to(icon(:times), 
-                model, 
-                data: { confirm: message }, 
+        link_to(icon(:times),
+                model,
+                data: { confirm: message },
                 method: :delete,
-                class: 'btn btn-xs btn-danger') 
+                class: 'btn btn-xs btn-danger')
       end
     end
 
@@ -216,12 +216,12 @@ module GriffithCommon
     def tag_list(model)
       list = ''
       model.tags.map(&:name).each do |item|
-        list += "<span class='label label-info'>#{icon(:tag)} #{item}</span> " 
+        list += "<span class='label label-info'>#{icon(:tag)} #{item}</span> "
       end
       list.html_safe
     end
 
-  
+
     def valid_path? path, method
       begin
         Rails.application.routes.recognize_path(path, method: method)
@@ -235,10 +235,10 @@ module GriffithCommon
        "<tr><th>#{field.to_s.humanize}</th><td>#{@object.send(field)}</td></tr>"
     end
 
-    
+
     def admin_debug
-      if logged_in? && 
-         current_user.admin? && 
+      if logged_in? &&
+         current_user.admin? &&
          current_user.full_name == 'Griffith, Andrew'
       then
         debug(params) +
@@ -247,12 +247,12 @@ module GriffithCommon
       end
     end
 
-    
+
     def search_query_tag opts = {}
       opts = { placeholder: 'Enter Search Query' }.merge(opts)
       text_field_tag :q, params[:q], placeholder: opts[:placeholder]
     end
-    
+
 
     def submit_search_tag
       button_tag(type: 'submit', class: 'btn btn-default') do
@@ -262,19 +262,20 @@ module GriffithCommon
 
     def full_text_search_tag opts = {}
       opts = { placeholder: 'Full Text Search' }.merge(opts)
-      text_field_tag :q, params[:q], class: 'search-query', 
+      text_field_tag :q, params[:q], class: 'search-query',
                                      placeholder: opts[:placeholder]
     end
 
-    private
+   private
 
     def get_class target_clazz
       ActiveRecord::Base.subclasses.each do |clazz|
        if clazz.to_s == target_clazz
          return clazz
        end
-      end    
+      end
     end
 
   end
+
 end
