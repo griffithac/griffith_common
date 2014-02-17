@@ -6,6 +6,7 @@ module GriffithCommon
     include GriffithCommon::ListTableBuilder
     include GriffithCommon::BootstrapHelpers
     include GriffithCommon::WillPaginateTwitterBootstrap::Helper
+    include FormatingHelpers
 
     
     # used in testing to check to this file has been loaded
