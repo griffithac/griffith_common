@@ -1,3 +1,9 @@
+# Require all gems here
+require 'bootstrap-sass'
+require 'bootstrap-datepicker-rails'
+require 'simple_form'
+require 'will_paginate'
+
 module GriffithCommon
 
   if defined?(Rails)
