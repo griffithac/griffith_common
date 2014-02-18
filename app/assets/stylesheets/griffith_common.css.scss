@@ -1,0 +1,23 @@
+// Gems
+@import 'bootstrap';
+@import 'bootstrap-datepicker';
+@import 'font-awesome';
+
+// Internal
+@import 'griffith_common/bootstrap_simple_form';
+@import 'griffith_common/bootstrap_tabs';
+@import 'griffith_common/pagination';
+@import 'griffith_common/alignment';
+@import 'griffith_common/inputs';
+@import 'griffith_common/rowlink';
+@import 'griffith_common/file_upload';
+@import 'griffith_common/disable';
+@import 'griffith_common/status';
+@import 'griffith_common/tables';
+@import 'griffith_common/inline_forms';
+
+body { 
+  padding-bottom: 70px; 
+  padding-top: 80px;
+}
+
