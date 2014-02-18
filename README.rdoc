@@ -1,3 +1,6 @@
-= GriffithCommon
+= Griffith Common Code
+
+Common code to be shared across all Griffith Industries, Inc. web apps.
+
 
 This project rocks and uses MIT-LICENSE.
