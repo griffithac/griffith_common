@@ -18,27 +18,12 @@ Gem::Specification.new do |s|
   s.summary = "Summary of GriffithCommon."
   s.test_files = ["test/dummy/README.rdoc", "test/dummy/Rakefile", "test/dummy/app/assets/images/.keep", "test/dummy/app/assets/javascripts/application.js", "test/dummy/app/assets/stylesheets/application.css", "test/dummy/app/controllers/application_controller.rb", "test/dummy/app/controllers/concerns/.keep", "test/dummy/app/helpers/application_helper.rb", "test/dummy/app/mailers/.keep", "test/dummy/app/models/.keep", "test/dummy/app/models/concerns/.keep", "test/dummy/app/views/layouts/application.html.erb", "test/dummy/bin/bundle", "test/dummy/bin/rails", "test/dummy/bin/rake", "test/dummy/config.ru", "test/dummy/config/application.rb", "test/dummy/config/boot.rb", "test/dummy/config/database.yml", "test/dummy/config/environment.rb", "test/dummy/config/environments/development.rb", "test/dummy/config/environments/production.rb", "test/dummy/config/environments/test.rb", "test/dummy/config/initializers/backtrace_silencers.rb", "test/dummy/config/initializers/filter_parameter_logging.rb", "test/dummy/config/initializers/inflections.rb", "test/dummy/config/initializers/mime_types.rb", "test/dummy/config/initializers/secret_token.rb", "test/dummy/config/initializers/session_store.rb", "test/dummy/config/initializers/wrap_parameters.rb", "test/dummy/config/locales/en.yml", "test/dummy/config/routes.rb", "test/dummy/lib/assets/.keep", "test/dummy/log/.keep", "test/dummy/public/404.html", "test/dummy/public/422.html", "test/dummy/public/500.html", "test/dummy/public/favicon.ico", "test/griffith_common_test.rb", "test/integration/navigation_test.rb", "test/test_helper.rb"]
 
-  if s.respond_to? :specification_version then
-    s.specification_version = 4
-
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<will_paginate>, ["~> 3.0.3"])
-      s.add_runtime_dependency(%q<bootstrap-sass>, ["~> 3.1.1"])
-      s.add_runtime_dependency(%q<font-awesome-sass>)
-      s.add_development_dependency(%q<sqlite3>, [">= 0"])
-      s.add_development_dependency(%q<pry>, [">= 0"])
-    else
-      s.add_dependency(%q<will_paginate>, ["~> 3.0.3"])
-      s.add_runtime_dependency(%q<bootstrap-sass>, ["~> 3.1.1"])
-      s.add_runtime_dependency(%q<font-awesome-sass>)
-      s.add_dependency(%q<sqlite3>, [">= 0"])
-      s.add_dependency(%q<pry>, [">= 0"])
-    end
-  else
-    s.add_dependency(%q<will_paginate>, ["~> 3.0.3"])
-    s.add_runtime_dependency(%q<bootstrap-sass>, ["~> 3.1.1"])
-    s.add_runtime_dependency(%q<font-awesome-sass>)
-    s.add_dependency(%q<sqlite3>, [">= 0"])
-    s.add_dependency(%q<pry>, [">= 0"])
-  end
+  s.add_runtime_dependency('will_paginate', ["~> 3.0.3"])
+  s.add_runtime_dependency('bootstrap-sass', ["~> 3.1.1"])
+  s.add_runtime_dependency('font-awesome-sass')
+  s.add_runtime_dependency('bootstrap-datepicker-rails')
+  s.add_runtime_dependency('simple_form')
+  s.add_development_dependency('sqlite3', [">= 0"])
+  s.add_development_dependency('pry', [">= 0"])
+  
 end
