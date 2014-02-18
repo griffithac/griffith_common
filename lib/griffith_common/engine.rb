@@ -1,5 +1,5 @@
 module GriffithCommon
-  class Engine < ::Rails::Engine 
+  class Engine < ::Rails::Engine
 
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
     config.autoload_paths += Dir["#{config.root}/app/lib/**/*.rb"]

@@ -1,6 +1,7 @@
 # Require all gems here
 require 'bootstrap-sass'
 require 'bootstrap-datepicker-rails'
+require 'font-awesome-sass'
 require 'simple_form'
 require 'will_paginate'
 
