@@ -30,3 +30,5 @@ config/initializers/secret_token.rb
 .griffith_common.gemspec.swp
 
 *.swp
+
+*.swo
