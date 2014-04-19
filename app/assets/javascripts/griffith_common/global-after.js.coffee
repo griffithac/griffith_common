@@ -18,7 +18,7 @@ jQuery ->
     $('div.expandible').addClass('col-md-12').removeClass('col-md-8')
     $('div.collapsible').hide()
     $('#resize-full').hide()
-    $('#resize-small').show()  
+    $('#resize-small').show()
   $('#resize-small').on 'click', ->
     $('div.expandible').removeClass('col-md-12').addClass('col-md-8')
     $('div.collapsible').show()
@@ -31,18 +31,18 @@ jQuery ->
     width: '100%'
   $('.elastic').elastic()
   $('.date-picker').datepicker
-      format: "yyyy-mm-dd"
+    format: "yyyy-mm-dd"
 
 $(document).bind 'nested:fieldAdded', ->
   $('select').chosen
-      width: '100%'
+    width: '100%'
   $('.date-picker').datepicker
-      format: "yyyy-mm-dd"
+    format: "yyyy-mm-dd"
 
 $(document).bind 'ui:refresh', ->
   $('select').chosen
-      width: '100%'
+    width: '100%'
   $('tr.rowlink').rowlink( target: 'td.rowlink a' )
   $('.elastic').elastic()
   $('.date-picker').datepicker
-      format: "yyyy-mm-dd"
+    format: "yyyy-mm-dd"
