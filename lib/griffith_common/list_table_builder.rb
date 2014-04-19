@@ -15,8 +15,10 @@ module GriffithCommon
         raise ArgumentError, "Missing block" unless block_given?
         @allow_nils = options[:allow_nils]
         @collection = collection
-        content_tag :table , class: "#{options[:class]}" do
-          yield(collection)
+        content_tag :div, class: 'table-responsive' do
+          content_tag :table , class: "#{options[:class]}" do
+            yield(collection)
+          end
         end.html_safe
       end
       
