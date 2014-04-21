@@ -9,4 +9,6 @@
     = submit_tag "Update #{current_model_title(title ||= nil)}", class: 'btn btn-primary' if can? :update, current_model_class
   - when 'show'
     = link_to "Edit #{current_model_title(title ||= nil)}", eval( "edit_#{current_model}_path @#{current_model}" ), class: 'btn btn-primary' if can? :create, current_model_class
+  - when 'event'
+    = link_to "Edit #{current_model_title(title ||= nil)}", eval( "edit_#{current_model}_path @#{current_model}" ), class: 'btn btn-primary' if can? :create, current_model_class
 
