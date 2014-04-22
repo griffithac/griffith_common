@@ -23,6 +23,9 @@ module GriffithCommon
       params[:controller].singularize
     end
 
+    def current_object
+      eval "@#{current_model}"
+    end
 
     def current_model_title title = nil
       unless title
