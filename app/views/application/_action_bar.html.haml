@@ -1,10 +1,15 @@
 = render layout: 'action_bar_blank' do
   - if current_action == "index" && can?(:create,  current_model.classify.constantize)
-    .col-md-3.button-group-left
-      = link_to "New #{current_model_title(title ||= nil)}", eval("new_#{current_model}_path"), :method => :get, class: 'btn btn-primary'
-      = yield
-    = render 'pagination_bar'
-
+    - if eval("will_paginate @#{collection ||= params[:controller]}")
+      .col-lg-4.col-md-4.col-sm-4.col-xs-12
+        = link_to "New #{current_model_title(title ||= nil)}", eval("new_#{current_model}_path"), :method => :get, class: 'btn btn-primary'
+        = yield
+      = render 'pagination_bar'
+    - else
+      .col-lg-12.col-md-12.col-sm-12.col-xs-12
+        = link_to "New #{current_model_title(title ||= nil)}", eval("new_#{current_model}_path"), :method => :get, class: 'btn btn-primary'
+        = yield
+ 
   - else
     .col-md-3.button-group-left
       - if controller == "home"

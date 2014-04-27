@@ -8,7 +8,7 @@
 
 .inline-form-row {
   padding: 0;
-  height: 49px;
+  //height: 49px;
   margin-right: -7.5px;
   margin-left: -7.5px;
 }
@@ -17,7 +17,6 @@
   padding: 0;
   margin-right: -7.5px;
   margin-left: -7.5px;
-  margin-bottom: 6px;
 }
 
 .row-group {
@@ -28,6 +27,7 @@
 .inline-form-input {
   padding-right: 7.5px;
   padding-left: 7.5px;
+  margin-bottom: 7.5px;
 
 // override normal css for inputs
 .form-group .form-input {

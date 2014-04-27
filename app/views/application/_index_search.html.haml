@@ -1,10 +1,10 @@
 = render layout: 'index_search_blank' do
-  .col-md-4.col-sm-5.inline-form-input
+  .col-lg-4.col-md-4.col-sm-5.col-xm-12.inline-form-input
     .input-group
       .input-group-addon
         Search by  
       = select_tag :field, options_for_select(search_column_options, selected: params[:field])
-  .col-md-8.col-sm-7.inline-form-input
+  .col-lg-8.col-md-8.col-sm-7.col-xm-12.inline-form-input{style: 'padding-bottom: 0px'}
     .input-group
       = search_query_tag
       .input-group-btn
