@@ -1,7 +1,7 @@
 - if /index/ =~ params[:action] && @view_type != 'Calendar' then
   .col-xs-12.visible-xs
     = eval("will_paginate @#{collection ||= params[:controller].pluralize}, inner_window: 0, outer_window: 0, style: 'float:left;'")
-  .col-sm-8.visible-sm
+  .col-sm-6.visible-sm.right{style: 'float: right;'}
     = eval("will_paginate @#{collection ||= params[:controller].pluralize}, inner_window: 0, outer_window: 0, style: 'float:right;'")
   .col-md-4.visible-md.visible-lg
     = eval("will_paginate @#{collection ||= params[:controller].pluralize}, inner_window: 0, outer_window: 0")
