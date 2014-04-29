@@ -12,4 +12,4 @@
         %span.caret
       %ul.dropdown-menu{ role: "menu" }
         - %w[5 10 15 20 25 50 100].each do |per_page|
-          %li= link_to per_page, eval("#{params[:controller].pluralize}_path( per_page: #{per_page} )")
+          %li= link_to per_page, path ||= eval("#{params[:controller].pluralize}_path( per_page: #{per_page} )")
