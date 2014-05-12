@@ -107,6 +107,7 @@ module GriffithCommon
       when host.match('localhost')   then "#{current_app} Dev"
       when host.match('griffithind') then 'Griffith'
       when host.match('wslservices') then 'WSL, Inc.'
+      when host.match('flooring2') then "f&sub2;"
       else 'Unknown Site'
       end
     end
