@@ -10,10 +10,9 @@ module GriffithCommon
       include ::ActionView::Helpers::TagHelper
 
       def list_table_for collection, options = {}
-        options = { class: 'table table-hover', allow_nils: false }.merge(options)
+        options = { class: 'table table-hover' }.merge(options)
 
         raise ArgumentError, "Missing block" unless block_given?
-        @allow_nils = options[:allow_nils]
         @collection = collection
         content_tag :div, class: 'table-responsive' do
           content_tag :table , class: "#{options[:class]}" do
@@ -30,36 +29,13 @@ module GriffithCommon
       end
 
       def item attribute, value = nil, options = {}
-
-        if @allow_nils == false
-          unless nil_row?(attribute, value)
-            if value.nil? && @collection && attribute.class == Symbol then
-              title = attribute.to_s.titleize
-              content_tag :tr do
-                content_tag( :th, title, class: options[:th_class] ) +
-                content_tag( :td, eval("@collection.#{attribute}") )
-              end
-            else
-              title = attribute.to_s.titleize
-              content_tag :tr do
-                content_tag( :th, title, class: options[:th_class] ) +
-                content_tag( :td, value, class: options[:td_class] )
-              end
-            end
+        if value.present? || (if attribute.class == Symbol then eval("@collection.#{attribute}.present?") end)
+          val = value.nil? ? eval("@collection.#{attribute}") : value
+          title = attribute.class == String ? attribute : attribute.to_s.titleize
+          content_tag :tr do
+            content_tag( :th, title, class: options[:th_class] ) +
+            content_tag( :td, val, class: options[:td_class] )
           end
-        end
-      end
-
-      private
-
-      def nil_row? attribute, value
-        case
-        when value.present?
-          return false
-        when attribute.class == Symbol && eval("@collection.#{attribute}").present?
-          return false
-        else
-          return true
         end
       end
 
