@@ -197,25 +197,6 @@ module GriffithCommon
     end
 
 
-    def index_edit_button model
-      if can? :edit, model
-        link_to(icon(:edit),
-                eval("edit_#{model.class.to_s.underscore}_path(#{model.id})"),
-                class: 'btn btn-default btn-xs' )
-      end
-    end
-
-
-    def index_destroy_button model, message = 'Are you sure?'
-      if can? :delete, model
-        link_to(icon(:times),
-                model,
-                data: { confirm: message },
-                method: :delete,
-                class: 'btn btn-xs btn-danger')
-      end
-    end
-
 
     def tag_list(model)
       list = ''
