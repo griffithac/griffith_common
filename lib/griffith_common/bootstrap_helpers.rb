@@ -20,8 +20,8 @@ module GriffithCommon
     end
 
     module Icon
-      def icon name
-        "<i class='fa fa-#{name.to_s} fa-fw'></i>".html_safe
+      def icon name, classes = ''
+        "<i class='fa fa-#{name.to_s} fa-fw #{classes}'></i>".html_safe
       end
     end
 
