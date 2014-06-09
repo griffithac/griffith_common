@@ -1,10 +1,16 @@
-/////////////////////////////
-// Inline Form Row Classes //
-/////////////////////////////
+/////////////////////////
+// Inline Form Classes //
+/////////////////////////
 
 // NOT SURE ABOUT THESE TWO LINES
 .form-row, .btn-add-row { margin-bottom: 6px; }
 .btn-add-row { margin-bottom: 18px; }
+
+.inline-form {
+  margin-right: -5px;
+  margin-left: -5px;
+  margin-bottom: 10px;
+}
 
 .inline-form-row {
   margin-right: -5px;
@@ -52,6 +58,4 @@
     margin-left: 15px;
   }
 }
-
-
 
