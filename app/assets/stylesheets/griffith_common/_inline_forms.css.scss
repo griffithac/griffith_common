@@ -13,9 +13,18 @@
 }
 
 .inline-form-row {
+  display: block;
+  height: 45px;
   margin-right: -5px;
   margin-left: -5px;
-  margin-bottom: -10px;
+  // this fixes an issue with a select within a inline-form-row
+  .form-group {
+    margin-bottom: 0px;
+    .form-input {
+      margin-right: 15px;
+      margin-left: 15px; 
+    }
+  }
 }
 
 .inline-form-header-row {
@@ -33,11 +42,6 @@
   padding-right: 5px;
   padding-left: 5px;
   margin-bottom: 5px;
-
-// override normal css for inputs
-.form-group .form-input {
-  margin-right: 15px;
-  margin-left: 15px; }
 }
 
 .inline-form-label {
