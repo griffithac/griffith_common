@@ -20,7 +20,7 @@ module GriffithCommon
 
 
     def current_model
-      params[:controller].singularize
+      current_controller.singularize
     end
 
     def current_object
@@ -28,26 +28,29 @@ module GriffithCommon
     end
 
     def current_model_title title = nil
-      unless title
-        params[:controller].singularize.titleize
-      else
+      if title.present?
         title
+      else
+        current_controller.singularize.titleize
       end
     end
 
-
     def current_model_class
-      params[:controller].classify.constantize
+      current_controller.classify.constantize
     end
 
 
     def current_controller
-      params[:controller]
+      if params[:type].present?
+        params[:type].underscore.pluralize
+      else
+        params[:controller].to_s
+      end
     end
 
 
     def current_action
-      params[:action]
+      params[:action].to_s
     end
 
 
