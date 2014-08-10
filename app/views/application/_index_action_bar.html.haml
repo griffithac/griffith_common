@@ -1,0 +1,11 @@
+= render layout: 'action_bar_blank' do
+  - if current_action == "index" && can?(:create,  current_model.classify.constantize)
+    - if eval("will_paginate @#{collection ||= params[:controller]}")
+      .col-sm-4.col-xs-12
+        = link_to "New #{current_model_title(title ||= nil)}", eval("new_#{current_model}_path"), :method => :get, class: 'btn btn-primary'
+        = yield
+      = render 'pagination_bar'
+    - else
+      .col-xs-12
+        = link_to "New #{current_model_title(title ||= nil)}", eval("new_#{current_model}_path"), :method => :get, class: 'btn btn-primary'
+        = yield
