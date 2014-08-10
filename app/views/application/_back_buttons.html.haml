@@ -1,6 +1,6 @@
 - if /index/ =~ current_action || current_controller == 'sessions' then
   = render 'home_button'
 - else 
-  - if can?(:read, current_model_class) && valid_path?(eval("#{current_controller}_path"), :get)
-    = link_to "#{current_model_title(title ||= nil)} Listing",  eval("#{current_controller}_path"), class: 'btn btn-default' unless current_controller == 'sessions'
+  - if can?(:read, current_model_class) && valid_path?(current_resource, :get)
+    = link_to "#{current_model_title(title ||= nil)} Listing",  current_resource, class: 'btn btn-default' unless current_controller == 'sessions'
   = render 'back_button'
