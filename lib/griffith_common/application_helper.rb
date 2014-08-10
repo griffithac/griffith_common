@@ -48,6 +48,21 @@ module GriffithCommon
       end
     end
 
+    def current_resource
+      request_path = request.path.split('/')
+      case request_path.count
+      when 2
+         [request_path[1].to_sym]
+      when 3
+         [request_path[1].singularize.to_sym]
+      when 4
+         [request_path[1].singularize.to_sym, request_path[3].to_sym]
+      when 5, 6
+         [request_path[1].singularize.to_sym, request_path[3].singularize.to_sym]
+      else
+        raise 'resource can not be inferred'
+      end
+    end
 
     def current_action
       params[:action].to_s
