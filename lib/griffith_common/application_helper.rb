@@ -48,6 +48,10 @@ module GriffithCommon
       end
     end
 
+    def edit_current_resource_path
+      polymorphic_url([:edit, current_resource].flatten)
+    end
+
     def current_resource
       request_path = request.path.split('/')
       case request_path.count
