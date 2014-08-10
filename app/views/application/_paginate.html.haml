@@ -1,1 +1,1 @@
-= eval("will_paginate @#{params[:controller].pluralize}")
+= eval("will_paginate @#{collection ||= current_controller}")
