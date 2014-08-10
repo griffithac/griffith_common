@@ -8,7 +8,7 @@
   - when 'update'
     = submit_tag "Update #{current_model_title(title ||= nil)}", class: 'btn btn-primary' if can? :update, current_object
   - when 'show'
-    = link_to "Edit #{current_model_title(title ||= nil)}", send("edit_#{current_model}_path"), class: 'btn btn-primary' if can? :update, current_object
+    = link_to "Edit #{current_model_title(title ||= nil)}", edit_current_resource_path, class: 'btn btn-primary' if can? :update, current_object
   - when 'event'
-    = link_to "Edit #{current_model_title(title ||= nil)}", send("edit_#{current_model}_path"), class: 'btn btn-primary' if can? :update, current_object
+    = link_to "Edit #{current_model_title(title ||= nil)}", edit_current_resource_path, class: 'btn btn-primary' if can? :update, current_object
 
