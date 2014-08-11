@@ -2,10 +2,10 @@ module GriffithCommon
   module BootstrapHelpers
 
     def panel_for heading, opts = {}
+      opts = {id: "#{heading.to_s.dasherize}", class: 'panel-default'}.merge(opts)
       heading = heading.to_s.titleize
-      opts = {class: 'panel-default'}.merge(opts)
 
-      content_tag :div, class: "panel #{opts[:class]}" do
+      content_tag :div, id: opts[:id],class: "panel #{opts[:class]}" do
         concat content_tag(:div,
                            content_tag(:h3,
                                        heading,
