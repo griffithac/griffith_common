@@ -5,7 +5,7 @@ require "griffith_common/bootstrap_helpers"
 module GriffithCommon
   module WillPaginateTwitterBootstrap
     class Renderer < WillPaginate::ActionView::LinkRenderer
-      
+
       include GriffithCommon::BootstrapHelpers::Icon
 
       ELLIPSIS = '&hellip;'
@@ -56,7 +56,7 @@ module GriffithCommon
       end
 
     end
-    
+
     class AjaxRenderer < WillPaginateTwitterBootstrap::Renderer
       def prepare(collection, options, template)
         options[:params] ||= {}
@@ -78,21 +78,21 @@ module GriffithCommon
 
 
     module Helper
-      
+
       # set default renderer
       def will_paginate(collection_or_options = nil, options = {})
         if collection_or_options.is_a? Hash
           options, collection_or_options = collection_or_options, nil
         end
         unless options[:renderer]
-          options = options.merge renderer: GriffithCommon::WillPaginateTwitterBootstrap::Renderer, 
+          options = options.merge renderer: GriffithCommon::WillPaginateTwitterBootstrap::Renderer,
                                   class:    'text-center'
         end
         super *[collection_or_options, options].compact
       end
-   
+
       def ajax_will_paginate(collection, options = {})
-        will_paginate(collection, options.merge( renderer: GriffithCommon::WillPaginateTwitterBootstrap::AjaxRenderer, 
+        will_paginate(collection, options.merge( renderer: GriffithCommon::WillPaginateTwitterBootstrap::AjaxRenderer,
                                                  class:    'text-center' ) )
       end
 
