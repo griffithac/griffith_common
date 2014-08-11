@@ -61,6 +61,7 @@ module GriffithCommon
       def prepare(collection, options, template)
         options[:params] ||= {}
         options[:params]["_"] = nil
+        options[:params][:object] = collection.first.class.to_s.underscore.downcase.pluralize
         super(collection, options, template)
       end
 
