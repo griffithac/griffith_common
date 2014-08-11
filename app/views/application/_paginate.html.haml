@@ -1,1 +1,4 @@
-= eval("will_paginate @#{collection ||= current_controller}")
+- if collection.present?
+  = will_paginate(collection, inner_window: 0, outer_window: 0, style: 'float:left;')
+- else
+  = eval("will_paginate @#{current_controller}, inner_window: 0, outer_window: 0, style: 'float:left;'")
