@@ -72,7 +72,7 @@ module GriffithCommon
           target = url(target)
         end
         ajax_call = "$.ajax({url: '#{target}', dataType: 'script'});"
-        @template.link_to_function(text.to_s.html_safe, ajax_call, attributes)
+        @template.content_tag(:a, text.to_s.html_safe, attributes.merge(:href => '#', :onclick => "#{ajax_call}; return false;"))
       end
     end
 
