@@ -93,7 +93,7 @@ module GriffithCommon
 
       def ajax_will_paginate(collection, options = {})
         will_paginate(collection, options.merge( renderer: GriffithCommon::WillPaginateTwitterBootstrap::AjaxRenderer,
-                                                 class:    'text-center' ) )
+                                                 class:    'ajax-pagination' ) )
       end
 
     end

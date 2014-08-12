@@ -2,6 +2,8 @@
 // Pagination Classes //
 ////////////////////////
 
+
+
 .pagination {
   float: center;
   margin-top: 0px;
@@ -35,4 +37,17 @@ h1 {
 .button-group-right {
   text-align: right;
   white-space: nowrap;  
+}
+
+.ajax-pagination {
+  text-align: center;
+  height: 27px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  li span, li a {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 8px;
+    padding-left: 8px;
+  }
 }
