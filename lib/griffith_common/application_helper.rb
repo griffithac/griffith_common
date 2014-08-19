@@ -53,19 +53,21 @@ module GriffithCommon
     end
 
     def current_resource
-      request_path = request.path.split('/')
+      request_path =
+        request.path.split('/').reject do |p|
+          ['new', 'edit', 'event', ''].include?(p)
+        end
+
+
       case request_path.count
-      when 2
-         [request_path[1].to_sym]
-      when 3
-         [request_path[1].singularize.to_sym]
-      when 4
-         [request_path[1].singularize.to_sym, request_path[3].to_sym]
-      when 5, 6
-         [request_path[1].singularize.to_sym, request_path[3].singularize.to_sym]
+      when 1,2
+         request_path[0].to_sym
+      when 3,4
+         [request_path[0].singularize.classify.constantize.find(request_path[1]), request_path[2].to_sym]
       else
         raise 'resource can not be inferred'
       end
+
     end
 
     def current_action
