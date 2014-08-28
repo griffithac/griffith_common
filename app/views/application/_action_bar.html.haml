@@ -4,7 +4,8 @@
       .col-sm-4.col-xs-12
         = link_to "New #{current_model_title(title ||= nil)}", eval("new_#{current_model}_path"), :method => :get, class: 'btn btn-primary'
         = yield
-      = render 'pagination_bar'
+      - if /index/ =~ current_action && @view_type != 'Calendar' then
+        = render 'pagination_bar'
     - else
       .col-xs-12
         = link_to "New #{current_model_title(title ||= nil)}", eval("new_#{current_model}_path"), :method => :get, class: 'btn btn-primary'
@@ -23,4 +24,5 @@
         = render 'submit_button', title: title ||= nil
       = yield if block_given?
       = render 'back_buttons', title: title ||= nil
-    = render 'pagination_bar'
+    - if /index/ =~ current_action && @view_type != 'Calendar' then
+      = render 'pagination_bar'
