@@ -1,10 +1,10 @@
 .col-xs-12.visible-xs
-  - collection ||= eval("@#{current_controller}")
-  = eval("will_paginate #{collection}, inner_window: 0, outer_window: 0, style: 'float:left;'")
+  - collection = collection || eval("@#{current_controller}")
+  = will_paginate collection, inner_window: 0, outer_window: 0, style: 'float:left;'
 .col-sm-6.visible-sm.right{style: 'float: right;'}
-  = eval("will_paginate #{collection}, inner_window: 0, outer_window: 0, style: 'float:right;'")
+  = will_paginate collection, inner_window: 0, outer_window: 0, style: 'float:right;'
 .col-md-4.visible-md.visible-lg
-  = eval("will_paginate #{collection}, inner_window: 0, outer_window: 0")
+  = will_paginate collection, inner_window: 0, outer_window: 0
 .col-md-2.visible-md.visible-lg.right{style: 'float: right;'}
   .btn-group.dropup
     %button.btn.btn-default.dropdown-toggle{ href: "#", data: {toggle: "dropdown"} }
