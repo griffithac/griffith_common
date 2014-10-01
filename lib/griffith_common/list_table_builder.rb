@@ -28,18 +28,26 @@ module GriffithCommon
         end.html_safe
       end
 
-      def item attribute, value = nil, options = {}
-        if value.present? || (if attribute.class == Symbol then eval("@collection.#{attribute}.present?") end)
-          val = value.nil? ? eval("@collection.#{attribute}") : value
-          title = attribute.class == String ? attribute : attribute.to_s.titleize
+      def item attribute, value = nil, title: nil, include_blank: false, th_class: '', td_class: ''
+        value = if value.nil?
+                  object = eval("@collection.#{attribute}")
+                  if object.respond_to? :name
+                    object.name
+                  else
+                    object
+                  end
+                else
+                  value
+                end
+
+        title = title || attribute.to_s.titleize
+        if value.present? || include_blank
           content_tag :tr do
-            content_tag( :th, title, class: options[:th_class] ) +
-            content_tag( :td, val, class: options[:td_class] )
+            content_tag(:th, title, class: th_class) +
+            content_tag(:td, value, class: td_class)
           end
         end
       end
-
     end
-
   end
 end
