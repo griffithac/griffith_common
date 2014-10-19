@@ -2,8 +2,8 @@ module GriffithCommon
   module BootstrapHelpers
 
     def panel_for(resource, opts = {})
-      title = opts.fetch(:title) { resource.to_s.titleize }
       opts = {id: "#{resource.to_s.dasherize}", class: 'panel-default'}.merge(opts)
+      title = opts.fetch(:title) { resource }
 
       content_tag :div, id: opts[:id],class: "panel #{opts[:class]}" do
         concat content_tag(:div,
