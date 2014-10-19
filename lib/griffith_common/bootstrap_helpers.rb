@@ -9,7 +9,7 @@ module GriffithCommon
         concat content_tag(:div,
                            content_tag(
                              :h3,
-                             title,
+                             title.to_s.titleize,
                              class: 'panel-title center'),
                            class: 'panel-heading')
         yield
