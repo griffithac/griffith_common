@@ -16,12 +16,12 @@ module GriffithCommon
       end.html_safe
     end
 
-    def badge count
+    def badge(count)
       "<span class='badge pull-right'>#{count}</span>".html_safe
     end
 
     module Icon
-      def icon name, classes = ''
+      def icon(name, classes = '')
         "<i class='fa fa-#{name.to_s} fa-fw #{classes}'></i>".html_safe
       end
     end
