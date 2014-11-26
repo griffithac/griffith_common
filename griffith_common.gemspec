@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency('will_paginate', ["~> 3.0.5"])
   s.add_runtime_dependency('bootstrap-sass', [">= 3.1.1.1"])
+  s.add_runtime_dependency('autoprefixer-rails')
   s.add_runtime_dependency('font-awesome-rails')
   s.add_runtime_dependency('bootstrap-datepicker-rails')
   s.add_runtime_dependency('simple_form')
