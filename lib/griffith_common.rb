@@ -1,5 +1,6 @@
 # Require all gems here
 require 'bootstrap-sass'
+require 'autoprefixer-rails'
 require 'bootstrap-datepicker-rails'
 require 'font-awesome-rails'
 require 'simple_form'
