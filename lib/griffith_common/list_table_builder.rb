@@ -10,11 +10,14 @@ module GriffithCommon
       include ::ActionView::Helpers::TagHelper
 
       def list_table_for collection, options = {}
-        options = { class: 'table table-hover' }.merge(options)
+        options = {
+          class: 'table table-hover',
+          div_class: 'table-responsive'
+        }.merge(options)
 
         raise ArgumentError, "Missing block" unless block_given?
         @collection = collection
-        content_tag :div, class: 'table-responsive' do
+        content_tag :div, class: "#{options[:div_class]}" do
           content_tag :table , class: "#{options[:class]}" do
             yield(collection)
           end
