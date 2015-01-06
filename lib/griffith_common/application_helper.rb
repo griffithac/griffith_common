@@ -162,12 +162,12 @@ module GriffithCommon
 
 
     def index_destroy_button models, message = 'Are you sure?'
-      models         = [models]
+      models         = [models].flatten
       primary_model  = models.flatten.last
       if can? :delete, [models].flatten.last
-        link_to( icon(:times), models, data: { confirm: message },
+        link_to(icon(:times), models, data: { confirm: message },
                                       method: :delete,
-                                      class: 'btn btn-xs btn-danger' )
+                                      class: 'btn btn-xs btn-danger')
       end
     end
 
