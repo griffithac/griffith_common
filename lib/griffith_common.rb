@@ -7,7 +7,6 @@ require 'simple_form'
 require 'will_paginate'
 
 module GriffithCommon
-
   if defined?(Rails)
     require 'griffith_common/table_builder'
     require 'griffith_common/calendar_builder'
@@ -19,9 +18,8 @@ module GriffithCommon
     require 'griffith_common/application_controller'
     require "griffith_common/engine"
     require "griffith_common/validators/email_validator"
-    require "griffith_common/validators/phone_number_validator"
+    require "griffith_common/validators/phone_validator"
   else
     throw 'GriffithCommon not loading'
   end
-
 end
