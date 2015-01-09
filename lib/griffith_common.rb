@@ -18,7 +18,7 @@ module GriffithCommon
     require 'griffith_common/application_controller'
     require "griffith_common/engine"
     require "griffith_common/validators/email_validator"
-    require "griffith_common/validators/phone_validator"
+    require "griffith_common/validators/phone_number_validator"
   else
     throw 'GriffithCommon not loading'
   end
