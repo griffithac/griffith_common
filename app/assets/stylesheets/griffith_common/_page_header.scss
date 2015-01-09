@@ -1,0 +1,44 @@
+$page-h1-color: white !default; 
+$page-h1-small-color: white !default; 
+$page-h1-background-color: darken($brand-primary, 15%) !default;
+
+body > div > div > h1 { 
+  display: absolute;
+  top: 0px;
+  text-align: center;
+  color: $page-h1-color; 
+  background-color: $page-h1-background-color;
+  margin-right: -3000px; 
+  margin-left: -3000px; 
+  margin-top: -80px;
+  padding-right: 3000px; 
+  padding-left: 3000px; 
+  padding-top: 75px;
+  padding-bottom: 15px;
+  border-bottom: 0px;
+
+  small {
+    color: $page-h1-small-color 
+  }
+
+  @media screen and (max-width: 979px) {
+    font-size: 24px;
+    margin-top: -80px;
+    padding-top: 75px;
+    padding-bottom: 15px;
+    small {
+      padding-top: 5px;
+      display: block;
+    }
+  }
+
+  @media screen and (min-width: 980px) {
+    text-align: left;
+    display: block;
+    small {
+      float: right;
+      padding-top: 10px;
+      text-align: left;
+    }
+  }
+} 

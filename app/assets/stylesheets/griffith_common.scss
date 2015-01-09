@@ -1,3 +1,7 @@
+// navbar breakpoint, avoid menu roll over to two lines
+$grid-float-breakpoint: 980px;
+$grid-float-breakpoint-max: 981px;
+
 // Gems
 @import 'bootstrap';
 @import 'bootstrap-datepicker';
@@ -16,11 +20,28 @@
 @import 'griffith_common/tables';
 @import 'griffith_common/inline_forms';
 @import 'griffith_common/action_bar';
+@import 'griffith_common/page_header';
 
 
-body { 
-  padding-bottom: 70px; 
-  padding-top: 80px;
+body {
+  padding-top: 70px; 
+  padding-bottom: 70px;
+  @media screen and (max-width: 979px) {
+    padding-bottom: 0px !important;
+  }
 }
 
+// prevent horizantal scolling
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+.no-margin {
+  margin: 0px;
+}
+
+.nowrap { 
+  white-space: nowrap; 
+}
 
