@@ -19,20 +19,12 @@ div.has-error {
   input[type='tel'],
   input[type='url'],
   textarea,
-  a.chosen-single,
-  .chosen-choices {
-    @extend .has-error;
-    @extend .form-control;
-  }
   
   label.form-label {
     @extend .has-error;
     @extend .control-label
   }
 }
-
-.chosen-container { width: 100% }
-a.chosen-single { width: 100%; }
 
 div.col-xs-1-1 > * > div.controls { @extend .col-xs-1; }
 div.col-xs-1-2 > * > div.controls { @extend .col-xs-2; }
