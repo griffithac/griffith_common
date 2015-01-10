@@ -13,11 +13,22 @@ module GriffithCommon
       true
     end
 
-
     def errors object
       render 'errors', object: object
     end
 
+    def flash_class(name)
+      class_name = case name.to_sym
+                   when :notice  then 'success'
+                   when :success then 'success'
+                   when :primary then 'primary'
+                   when :info    then 'info'
+                   when :warning then 'warning'
+                   when :danger  then 'danger'
+                   else 'info'
+                   end
+      "center alert alert-#{ class_name }"
+    end
 
     def current_model
       current_controller.singularize
