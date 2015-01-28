@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('bootstrap-sass', [">= 3.1.1.1"])
   s.add_runtime_dependency('autoprefixer-rails')
   s.add_runtime_dependency('font-awesome-rails')
+  s.add_runtime_dependency('select2-rails')
   s.add_runtime_dependency('bootstrap-datepicker-rails')
   s.add_runtime_dependency('simple_form')
   s.add_development_dependency('sqlite3', [">= 0"])
