@@ -5,6 +5,7 @@ require 'bootstrap-datepicker-rails'
 require 'font-awesome-rails'
 require 'simple_form'
 require 'will_paginate'
+require 'select2-rails'
 
 module GriffithCommon
   if defined?(Rails)
