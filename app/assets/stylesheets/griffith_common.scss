@@ -6,6 +6,8 @@ $grid-float-breakpoint-max: 981px;
 @import 'bootstrap';
 @import 'bootstrap-datepicker';
 @import 'font-awesome';
+@import 'select2';
+@import 'select2-bootstrap';
 
 // Internal
 @import 'griffith_common/bootstrap_simple_form';
