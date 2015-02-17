@@ -18,7 +18,6 @@ module GriffithCommon
     require 'griffith_common/formatting_helpers'
     require 'griffith_common/application_helper'
     require 'griffith_common/application_controller'
-    require 'griffith_common/state_machine_mixins'
     require 'griffith_common/engine'
     require 'griffith_common/validators/email_validator'
     require 'griffith_common/validators/phone_number_validator'
