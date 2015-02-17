@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('select2-rails')
   s.add_runtime_dependency('bootstrap-datepicker-rails')
   s.add_runtime_dependency('simple_form')
+  s.add_runtime_dependency('state_machine')
   s.add_development_dependency('sqlite3', [">= 0"])
   s.add_development_dependency('pry', [">= 0"])
 end
