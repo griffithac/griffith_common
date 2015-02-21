@@ -171,10 +171,14 @@ module StateMachineMixins
         'Denied'                 => 'danger',
         'On Order'               => 'info',
         'Reserved'               => 'warning',
-        'Ordered'                => 'info',
+        'Placed'                 => 'info',
         'Pick Listed'            => 'info',
         'Canceled'               => 'danger',
-        'Filled'                 => 'success',
+        'Ready For Will Call'    => 'purple',
+        'Routed For Delivery'    => 'purple',
+        'Out For Delivery'       => 'warning',
+        'Signed For'             => 'success',
+        'Invoiced'               => 'default',
       }
     end
   end
