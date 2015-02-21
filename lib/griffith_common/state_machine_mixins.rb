@@ -153,7 +153,7 @@ module StateMachineMixins
         'Prospect'               => 'info',
         'Inactive Client'        => 'default',
         'Follow Up Needed'       => 'warning',
-        'Pricing Presented'      => 'info',
+        'Pricing Presented'      => 'purple',
         'Needs Update'           => 'warning',
         'Active'                 => 'info',
         'Inactive'               => 'default',
