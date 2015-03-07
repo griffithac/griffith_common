@@ -1,10 +1,10 @@
 module GriffithCommon
   module BootstrapHelpers
     def panel_for(resource, opts = {})
-      opts = {id: "#{resource.to_s.dasherize}", class: 'panel-default'}.merge(opts)
+      opts = {id: "#{resource.to_s.dasherize}", class: 'panel panel-default'}.merge(opts)
       title = opts.fetch(:title) { resource }
 
-      content_tag :div, id: opts[:id],class: "panel #{opts[:class]}" do
+      content_tag :div, **opts do
         concat content_tag(:div,
                            content_tag(
                              :h3,
@@ -17,6 +17,11 @@ module GriffithCommon
 
     def badge(count)
       "<span class='badge pull-right'>#{count}</span>".html_safe
+    end
+
+    def label_for(name, opts = {})
+      opts = {class: 'label-default'}.merge(opts)
+      "<span class='label #{opts[:class]}'>#{name}</span>".html_safe
     end
 
     module Icon
