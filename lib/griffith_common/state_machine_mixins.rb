@@ -175,8 +175,8 @@ module StateMachineMixins
         'Pick Listed'            => 'info',
         'Canceled'               => 'danger',
         'Ready For Will Call'    => 'purple',
-        'Routed For Delivery'    => 'purple',
-        'Out For Delivery'       => 'warning',
+        'Routed For Delivery'    => 'warning',
+        'Out For Delivery'       => 'purple',
         'Signed For'             => 'success',
         'Invoiced'               => 'default',
       }
