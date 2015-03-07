@@ -1,4 +1,4 @@
-//@import "bootstrap";
+@import "bootstrap";
 
 input[type='text'],
 input[type='number'],
@@ -19,12 +19,12 @@ div.has-error {
   input[type='tel'],
   input[type='url'],
   textarea,
-  
   label.form-label {
     @extend .has-error;
-    @extend .control-label
+    @extend .control-label;
   }
 }
+
 
 div.col-xs-1-1 > * > div.controls { @extend .col-xs-1; }
 div.col-xs-1-2 > * > div.controls { @extend .col-xs-2; }
