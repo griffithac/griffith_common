@@ -1,11 +1,12 @@
 a.disabled-link,
-a.disabled-link:visited ,
+a.disabled-link:visited,
 a.disabled-link:active,
-a.disabled-link:hover { color: #484848 !important;
+a.disabled-link:hover { 
+  color: #484848 !important;
   pointer-events: none;
   cursor: default;
 }
 
 .disable-cell, .disable-cell:hover {
- background-color: #f5f5f5
+  background-color: #f5f5f5;
 }
