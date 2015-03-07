@@ -9,13 +9,8 @@
   }
 }
 
-
 div.pagination {
-  @extend .text-center
-}
-
-h1 {
-  @extend .page-header
+  text-align: center; 
 }
 
 .index-btn { 
