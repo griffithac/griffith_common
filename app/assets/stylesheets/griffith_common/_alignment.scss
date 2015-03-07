@@ -2,9 +2,18 @@
 // Alignment Helpers //
 ///////////////////////
 
-td.right, th.right, .right { text-align: right; }
-td.left, th.left, .left  {  text-align: left; }
-td.center, th.center, .center  { text-align: center; }
+td.right, th.right, .right { 
+  text-align: right; 
+}
+
+td.left, th.left, .left { 
+  text-align: left; 
+}
+
+td.center, th.center, .center { 
+  text-align: center; 
+}
+
 .justify {
  text-align: justify; 
  text-justify: inter-word; //ie only
