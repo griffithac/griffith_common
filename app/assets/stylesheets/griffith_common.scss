@@ -12,6 +12,7 @@ $grid-float-breakpoint-max: 981px;
 // Internal
 @import 'griffith_common/bootstrap_simple_form';
 @import 'griffith_common/bootstrap_tabs';
+@import 'griffith_common/page_header';
 @import 'griffith_common/pagination';
 @import 'griffith_common/alignment';
 @import 'griffith_common/inputs';
@@ -22,7 +23,6 @@ $grid-float-breakpoint-max: 981px;
 @import 'griffith_common/tables';
 @import 'griffith_common/inline_forms';
 @import 'griffith_common/action_bar';
-@import 'griffith_common/page_header';
 
 
 body {
