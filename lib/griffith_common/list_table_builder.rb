@@ -11,7 +11,7 @@ module GriffithCommon
 
       def list_table_for collection, options = {}
         options = {
-          class: 'table table-hover',
+          class: 'table table-hover table-condensed',
           div_class: 'table-responsive'
         }.merge(options)
 
