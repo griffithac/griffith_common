@@ -40,5 +40,9 @@ module GriffithCommon
       eval("#{params[:controller].classify}.search_columns").values
     end
 
+    def sort_column_and_direction
+      return unless sort_column.present? && sort_direction.present?
+      "#{sort_column} #{sort_direction}"
+    end
   end
 end
