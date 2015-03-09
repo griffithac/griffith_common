@@ -25,19 +25,17 @@ module GriffithCommon
     end
 
     def sort_column
-      if params[:sort].present? && sortable_columns.include?(params[:sort])
-        params[:sort]
-      else
-        default_sort_column
-      end
-    end
-
-    def default_sort_column
-      sortable_columns.compact.first
+      return unless params[:sort].present? && sortable_columns.include?(params[:sort])
+      params[:sort]
     end
 
     def sortable_columns
-      eval("#{params[:controller].classify}.search_columns").values
+      klass = params[:controller].classify.constantize
+      if klass::SORT_COLUMNS
+         klass::SORT_COLUMNS
+      else
+        klass.search_columns.values
+      end
     end
 
     def sort_column_and_direction
