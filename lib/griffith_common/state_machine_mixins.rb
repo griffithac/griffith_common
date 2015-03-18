@@ -16,7 +16,7 @@ module StateMachineMixins
     end
 
     def call_event params
-      if ( send(params[:event]) if state_events.include?(params[:event].to_sym) )
+      if (send(params[:event]) if state_events.include?(params[:event].to_sym))
         if respond_to? :current_user_id
           self.current_user_id = params[:current_user_id].to_i
           set_creator_and_updater
@@ -35,7 +35,6 @@ module StateMachineMixins
     end
 
     module ClassMethods
-
       def states
         {}
       end
@@ -89,7 +88,6 @@ module StateMachineMixins
 
 
   module Helper
-
     def state_changer model
 
       current_state =
