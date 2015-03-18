@@ -35,7 +35,14 @@ module GriffithCommon
     end
 
     def current_object
-      eval "@#{current_model}"
+      model_var = "@#{current_model}"
+      controller_var = "@#{params[:controller].singularize}"
+
+      if instance_variables.include?(model_var.to_sym)
+        instance_variable_get model_var
+      elsif instance_variables.include?(controller_var.to_sym)
+        instance_variable_get controller_var
+      end
     end
 
     def current_model_title title = nil
