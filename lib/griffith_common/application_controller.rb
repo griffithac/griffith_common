@@ -31,7 +31,10 @@ module GriffithCommon
 
     def sortable_columns
       klass = params[:controller].classify.constantize
-      if klass::SORT_COLUMNS
+
+      constant = klass::SORT_COLUMNS if defined? klass::SORT_COLUMNS
+
+      if constant
          klass::SORT_COLUMNS
       else
         klass.search_columns.values
