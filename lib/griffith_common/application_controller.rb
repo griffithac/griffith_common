@@ -45,5 +45,13 @@ module GriffithCommon
       return unless sort_column.present? && sort_direction.present?
       "#{sort_column} #{sort_direction}"
     end
+
+    def sort_params
+      sort_column_and_direction
+    end
+
+    def page_params
+      { page: params[:page], per_page: per_page }
+    end
   end
 end
