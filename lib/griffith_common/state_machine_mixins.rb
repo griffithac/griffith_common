@@ -7,7 +7,9 @@ module StateMachineMixins
 
     included do
       after_initialize do
-        self[:state] ||= 1
+        if respond_to?(:state)
+          self[:state] ||= 1
+        end
       end
     end
 
