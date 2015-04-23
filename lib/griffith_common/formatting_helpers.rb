@@ -5,8 +5,12 @@ module GriffithCommon
     end
 
     def percentage(value, precision = 2)
-      value = 0.00 if value.blank?
-      number_to_percentage(value * 100, precision: precision)
+      if value != 0
+        value = 0.00 if value.blank?
+        number_to_percentage(value * 100, precision: precision)
+      else
+        '-'
+      end
     end
     alias_method :decimal_to_percentage, :percentage
 
