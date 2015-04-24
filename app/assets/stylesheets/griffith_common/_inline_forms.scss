@@ -8,6 +8,15 @@
   margin-bottom: 5px;
 }
 
+////////////////////////////////////////////////
+// Fix for select2 dropdown within input-group //
+////////////////////////////////////////////////
+
+.inline-form-row .form-group {
+  margin-right: -15px !important;
+  margin-left: -15px !important;
+}
+
 .inline-form-row {
   display: block;
   margin-right: -5px;

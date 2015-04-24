@@ -13,6 +13,8 @@ $grid-float-breakpoint-max: 981px;
 // Internal
 @import 'griffith_common/bootstrap_simple_form';
 @import 'griffith_common/bootstrap_tabs';
+@import 'griffith_common/bootstrap_modals';
+@import 'griffith_common/bootstrap_panels';
 @import 'griffith_common/page_header';
 @import 'griffith_common/alignment';
 @import 'griffith_common/pagination';
@@ -38,17 +40,5 @@ body {
 html, body {
   overflow-x: hidden;
   max-width: 100%;
-}
-
-.no-margin {
-  margin: 0px;
-}
-
-.no-padding {
-  padding: 0px;
-}
-
-.nowrap { 
-  white-space: nowrap; 
 }
 
