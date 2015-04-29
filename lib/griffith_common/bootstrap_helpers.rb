@@ -1,7 +1,7 @@
 module GriffithCommon
   module BootstrapHelpers
     def panel_for(resource, opts = {})
-      opts = {id: "#{resource.to_s.dasherize}", class: 'panel panel-default'}.merge(opts)
+      opts = {id: "#{resource.to_s.underscore}", class: 'panel panel-default'}.merge(opts)
       title = opts.fetch(:title) { resource }
 
       content_tag :div, **opts do
