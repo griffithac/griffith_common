@@ -174,7 +174,7 @@ module GriffithCommon
       if can? :edit, primary_model
         link_to(icon(:edit),
                 send("edit_#{path_partial}_path", *models),
-                class: 'btn btn-default btn-xs')
+                class: 'btn btn-default btn-xs rowlink-skip')
       end
     end
 
