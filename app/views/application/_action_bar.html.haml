@@ -25,4 +25,4 @@
       = yield if block_given?
       = render 'back_buttons', title: title ||= nil
     - if /index/ =~ current_action && @view_type != 'Calendar' then
-      = render 'pagination_bar'
+      = render 'pagination_bar', locals: { collection: collection }
