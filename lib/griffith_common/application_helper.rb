@@ -13,7 +13,7 @@ module GriffithCommon
       true
     end
 
-    def errors object
+    def errors(object)
       render 'errors', object: object
     end
 
