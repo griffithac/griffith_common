@@ -1,15 +1,19 @@
 module GriffithCommon
   module FormattingHelpers
     def simple_number(number)
-      number == number.to_i ? number.to_i : number.round(4)
+      if number.nil? || number.zero?
+        '-'
+      else
+        number == number.to_i ? number.to_i : number.round(4)
+      end
     end
 
     def percentage(value, precision = 2)
-      if value != 0
+      if value.nil? || value.zero?
+        '-'
+      else
         value = 0.00 if value.blank?
         number_to_percentage(value * 100, precision: precision)
-      else
-        '-'
       end
     end
     alias_method :decimal_to_percentage, :percentage
