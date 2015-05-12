@@ -21,7 +21,7 @@ module GriffithCommon
 
     def quantity(val)
       return '-' if val.nil? || val.zero?
-      number_with_precision(number.to_f, precision: 2, delimiter: ',')
+      number_with_precision(val.to_f, precision: 2, delimiter: ',')
     end
   end
 end
