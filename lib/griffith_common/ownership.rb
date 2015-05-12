@@ -90,4 +90,3 @@ module Ownership
     end
   end
 end
-

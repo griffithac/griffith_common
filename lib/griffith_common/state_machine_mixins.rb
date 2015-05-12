@@ -21,7 +21,6 @@ module StateMachineMixins
       if (send(params[:event]) if state_events.include?(params[:event].to_sym))
         if respond_to? :current_user_id
           self.current_user_id = params[:current_user_id].to_i
-          set_creator_and_updater
           save
         end
       end
