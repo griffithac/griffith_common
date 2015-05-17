@@ -45,7 +45,7 @@ module GriffithCommon
       end
     end
 
-    def current_model_title title = nil
+    def current_model_title(title = nil)
       if title.present?
         title
       else
@@ -93,7 +93,7 @@ module GriffithCommon
     end
 
 
-    def search_column_options clazz = nil
+    def search_column_options(clazz = nil)
       clazz ||= get_class(params[:controller].to_s.classify)
       columns = {}
       if clazz.respond_to? :search_columns
@@ -107,7 +107,7 @@ module GriffithCommon
     end
 
 
-    def sortable title, label = nil
+    def sortable(title, label = nil)
       column =
         get_class(
           params[:controller].to_s.classify
@@ -166,20 +166,37 @@ module GriffithCommon
       end
     end
 
+    def index_buttons(models)
+      index_show_button(models) + '<span> </span>'.html_safe +
+      index_edit_button(models) + '<span> </span>'.html_safe +
+      index_destroy_button(models)
+    end
 
-    def index_edit_button models
+    def index_show_button(models)
+      models         = [models].flatten
+      primary_model  = models.last
+      path_partial   = models.map(&:class).map(&:to_s).map(&:underscore).join('_')
+      if can? :read, primary_model
+        link_to(icon('external-link'),
+                send("#{path_partial}_path", *models),
+                     class: 'btn btn-info btn-xs',
+                     target: '_blank')
+      end
+    end
+
+    def index_edit_button(models)
       models         = [models].flatten
       primary_model  = models.last
       path_partial   = models.map(&:class).map(&:to_s).map(&:underscore).join('_')
       if can? :edit, primary_model
         link_to(icon(:edit),
                 send("edit_#{path_partial}_path", *models),
-                class: 'btn btn-default btn-xs rowlink-skip')
+                class: 'btn btn-default btn-xs')
       end
     end
 
 
-    def index_destroy_button models, message = 'Are you sure?'
+    def index_destroy_button(models, message = 'Are you sure?')
       models         = [models].flatten
       primary_model  = models.flatten.last
       if can? :delete, [models].flatten.last
