@@ -1,6 +1,5 @@
 module GriffithCommon
   module ApplicationHelper
-
     include GriffithCommon::TableBuilder
     include GriffithCommon::CalendarBuilder
     include GriffithCommon::ListTableBuilder
@@ -57,7 +56,6 @@ module GriffithCommon
       current_controller.classify.constantize
     end
 
-
     def current_controller
       if params[:type].present?
         params[:type].underscore.pluralize
@@ -76,7 +74,6 @@ module GriffithCommon
           ['new', 'edit', 'event', ''].include?(p)
         end
 
-
       case request_path.count
       when 1,2
          request_path[0].to_sym
@@ -92,7 +89,6 @@ module GriffithCommon
       params[:action].to_s
     end
 
-
     def search_column_options(clazz = nil)
       clazz ||= get_class(params[:controller].to_s.classify)
       columns = {}
@@ -105,7 +101,6 @@ module GriffithCommon
       end
       return columns
     end
-
 
     def sortable(title, label = nil)
       column =
@@ -132,7 +127,6 @@ module GriffithCommon
                                   page:      nil), { class: css_class }
     end
 
-
     def current_app
       app = Rails.application.class.parent_name
       case
@@ -141,7 +135,6 @@ module GriffithCommon
       else 'Unknown App'
       end
     end
-
 
     def brand_for_site
       host = request.host
@@ -153,7 +146,6 @@ module GriffithCommon
       else 'Unknown Site'
       end
     end
-
 
     def current_page_title
       case current_controller
@@ -195,7 +187,6 @@ module GriffithCommon
       end
     end
 
-
     def index_destroy_button(models, message = 'Are you sure?')
       models         = [models].flatten
       primary_model  = models.flatten.last
@@ -206,7 +197,6 @@ module GriffithCommon
       end
     end
 
-
     def tag_list(model)
       list = ''
       model.tags.map(&:name).each do |item|
@@ -215,11 +205,9 @@ module GriffithCommon
       list.html_safe
     end
 
-
     def add_button
       button_tag(type: :submit, class: 'btn btn-primary') { icon(:plus) }
     end
-
 
     def remove_button model
       link_to icon(:times), model, data: { confirm: 'Are you sure?' },
@@ -228,7 +216,6 @@ module GriffithCommon
                                    style: 'margin-left: 12px;',
                                    remote: true
     end
-
 
     ## Payroll Helper
     def formatted_rate pay_rate
@@ -239,13 +226,11 @@ module GriffithCommon
       end
     end
 
-
     def hours_mins mins # Pretty print time in hours and mins
       hours = (mins / 60)
       min  = mins % 60
       "#{hours}:#{min.to_s.rjust(2,'0')}"
     end
-
 
     def full_address address
       content_tag :div do
@@ -255,12 +240,9 @@ module GriffithCommon
       end
     end
 
-
     def yes_no val
       val ? 'yes' : 'no'
     end
-
-
 
     def tag_list(model)
       list = ''
@@ -270,7 +252,6 @@ module GriffithCommon
       list.html_safe
     end
 
-
     def valid_path? path, method
       begin
         Rails.application.routes.recognize_path(path, method: method)
@@ -279,11 +260,9 @@ module GriffithCommon
       end
     end
 
-
     def print(field)
        "<tr><th>#{field.to_s.humanize}</th><td>#{@object.send(field)}</td></tr>"
     end
-
 
     def admin_debug
       if logged_in? &&
@@ -296,12 +275,10 @@ module GriffithCommon
       end
     end
 
-
     def search_query_tag opts = {}
       opts = { placeholder: 'Enter Search Query' }.merge(opts)
       text_field_tag :q, params[:q], placeholder: opts[:placeholder]
     end
-
 
     def submit_search_tag
       button_tag(type: 'submit', class: 'btn btn-default') do
@@ -315,16 +292,14 @@ module GriffithCommon
                                      placeholder: opts[:placeholder]
     end
 
-   private
+    private
 
     def get_class target_clazz
       ActiveRecord::Base.subclasses.each do |clazz|
-       if clazz.to_s == target_clazz
-         return clazz
-       end
+        if clazz.to_s == target_clazz
+          return clazz
+        end
       end
     end
-
   end
-
 end
