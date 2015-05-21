@@ -12,16 +12,16 @@
         = yield
   - elsif %w[show new create edit update event].include?(current_action)  
     .col-xs-12
-      = render 'submit_button', title: title ||= nil
+      = render 'submit_button', title: title ||= nil, object: object ||= nil
       = yield if block_given?
-      = render 'back_buttons', title: title ||= nil
+      = render 'back_buttons', title: title ||= nil, object: object ||= nil
   - else
     .col-md-3
       - if controller == "home"
       - elsif controller == "sessions"
         = submit_tag 'Login', class: 'btn btn-primary'
       - else
-        = render 'submit_button', title: title ||= nil
+        = render 'submit_button', title: title ||= nil, object: object ||= nil
       = yield if block_given?
       = render 'back_buttons', title: title ||= nil
     - if /index/ =~ current_action && @view_type != 'Calendar' then

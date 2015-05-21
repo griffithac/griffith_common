@@ -4,11 +4,11 @@
   - when 'create' 
     = submit_tag "Create #{current_model_title(title ||= nil)}", class: 'btn btn-primary' if can? :create, current_model_class
   - when 'edit'
-    = submit_tag "Update #{current_model_title(title ||= nil)}", class: 'btn btn-primary' if can? :update, current_object
+    = submit_tag "Update #{current_model_title(title ||= nil)}", class: 'btn btn-primary' if can? :update, object ||= current_object
   - when 'update'
-    = submit_tag "Update #{current_model_title(title ||= nil)}", class: 'btn btn-primary' if can? :update, current_object
+    = submit_tag "Update #{current_model_title(title ||= nil)}", class: 'btn btn-primary' if can? :update, object ||= current_object
   - when 'show'
-    = link_to "Edit #{current_model_title(title ||= nil)}", send("edit_#{current_model}_path"), class: 'btn btn-primary' if can? :update, current_object
+    = link_to "Edit #{current_model_title(title ||= nil)}", send("edit_#{current_model}_path"), class: 'btn btn-primary' if can? :update, object ||= current_object
   - when 'event'
-    = link_to "Edit #{current_model_title(title ||= nil)}", send("edit_#{current_model}_path"), class: 'btn btn-primary' if can? :update, current_object
+    = link_to "Edit #{current_model_title(title ||= nil)}", send("edit_#{current_model}_path"), class: 'btn btn-primary' if can? :update, object ||= current_object
 
