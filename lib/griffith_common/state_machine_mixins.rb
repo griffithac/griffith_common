@@ -103,14 +103,15 @@ module StateMachineMixins
 
     end
 
-    def state_changer_buttons models, link_class: 'btn btn-xs btn-default', link_data: {}
+    def state_changer_buttons models, link_class: 'btn btn-xs btn-default', redirect_to: nil, link_data: {}
       models         = [models].flatten
       primary_model  = models.last
       path_partial   = models.map(&:class).map(&:to_s).map(&:underscore).join('_')
       state_buttons = ''
       primary_model.state_events.each do |event|
         if eval("primary_model.can_#{event.to_s}?")
-          path = eval("event_#{path_partial}_path(*models, event: :#{event})")
+          redirect = redirect_to.present? ? ", redirect_to: '#{redirect_to}'" : ''
+          path = eval("event_#{path_partial}_path(*models, event: :#{event}#{redirect})")
           state_buttons += link_to(event.to_s.titleize, path, class: link_class, data: link_data )
         end
       end
