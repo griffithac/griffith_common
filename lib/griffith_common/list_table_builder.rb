@@ -31,8 +31,8 @@ module GriffithCommon
         end.html_safe
       end
 
-      def item(attribute, value: nil, label: nil, include_blank: false, th_class: 'left', td_class: 'left')
-        value = if value.nil?
+      def item(attribute, value: :none, label: nil, include_blank: false, th_class: 'left', td_class: 'left')
+        value = if value == :none
                   object = eval("@collection.#{attribute}")
                   if object.respond_to? :name
                     object.name
