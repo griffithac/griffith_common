@@ -1,12 +1,12 @@
 module GriffithCommon
-  module ApplicationController #< ActionController::Base
+  module ApplicationController
 
     DEFAULT_ROWS = 15
     MIN_ROWS     = 1
     MAX_ROWS     = 100
     DEFAULT_SORT = 'asc'
 
-    ActionController::Base.helper_method :sort_column, :sort_direction
+    ActionController::Base.helper_method :sort_column, :sort_direction, :current_resource
 
     def per_page
       if (MIN_ROWS..MAX_ROWS).include? params[:per_page].to_i
@@ -52,6 +52,22 @@ module GriffithCommon
 
     def page_params
       { page: params[:page], per_page: per_page }
+    end
+
+    def current_resource
+      request_path =
+        request.path.sub(/\..*/, '').split('/').reject do |p|
+          ['new', 'edit', 'event', ''].include?(p)
+        end
+
+      case request_path.count
+      when 1,2
+         request_path[0].to_sym
+      when 3,4
+         [request_path[0].singularize.classify.constantize.find(request_path[1]), request_path[2].to_sym]
+      else
+        raise 'resource can not be inferred'
+      end
     end
   end
 end

@@ -68,23 +68,6 @@ module GriffithCommon
       polymorphic_url([:edit, current_resource].flatten)
     end
 
-    def current_resource
-      request_path =
-        request.path.split('/').reject do |p|
-          ['new', 'edit', 'event', ''].include?(p)
-        end
-
-      case request_path.count
-      when 1,2
-         request_path[0].to_sym
-      when 3,4
-         [request_path[0].singularize.classify.constantize.find(request_path[1]), request_path[2].to_sym]
-      else
-        raise 'resource can not be inferred'
-      end
-
-    end
-
     def current_action
       params[:action].to_s
     end

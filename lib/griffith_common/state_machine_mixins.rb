@@ -17,7 +17,7 @@ module StateMachineMixins
       human_state_name.titleize
     end
 
-    def call_event params
+    def call_event(params)
       if (send(params[:event]) if state_events.include?(params[:event].to_sym))
         if respond_to? :current_user_id
           self.current_user_id = params[:current_user_id].to_i
@@ -40,7 +40,7 @@ module StateMachineMixins
         {}
       end
 
-      def valid_state? val
+      def valid_state?(val)
         states.values.include?(val.to_i)
       end
 
@@ -83,14 +83,31 @@ module StateMachineMixins
           scope key, -> { where(state: value) }
         end
       end
-
     end
   end
 
+  module Controller
+    def event
+      set_object
+      respond_to do |format|
+        format.js do
+          @object .call_event(params)
+        end
+      end
+    end
+
+    # This can be overridden if needed
+    def set_object
+      @object = current_resource.to_s
+                                .singularize
+                                .classify
+                                .constantize
+                                .find(params[:id])
+    end
+  end
 
   module Helper
-    def state_changer model
-
+    def state_changer(model)
       current_state =
       list_table_for model, class: 'table table-condensed table-hover table-responsive' do |model|
         item :current_state, value: state_label(model)
@@ -100,10 +117,9 @@ module StateMachineMixins
         concat current_state
         concat content_tag(:div, state_changer_buttons(model), class: 'panel-footer')
       end.html_safe
-
     end
 
-    def state_changer_buttons models, link_class: 'btn btn-xs btn-default', redirect_to: nil, link_data: {}
+    def state_changer_buttons(models, link_class: 'btn btn-xs btn-default', redirect_to: nil, link_data: {})
       models         = [models].flatten
       primary_model  = models.last
       path_partial   = models.map(&:class).map(&:to_s).map(&:underscore).join('_')
@@ -111,14 +127,19 @@ module StateMachineMixins
       primary_model.state_events.each do |event|
         if eval("primary_model.can_#{event.to_s}?")
           redirect = redirect_to.present? ? ", redirect_to: '#{redirect_to}'" : ''
-          path = eval("event_#{path_partial}_path(*models, event: :#{event}#{redirect})")
-          state_buttons += link_to(event.to_s.titleize, path, class: link_class, data: link_data )
+          path = eval("event_#{path_partial}_path(*models, format: :js)")
+          state_buttons += button_to(event.to_s.titleize,
+                                     path,
+                                     remote: true,
+                                     params: { event: event, redirect: redirect },
+                                     class: link_class,
+                                     data: link_data)
         end
       end
       button_group = content_tag(:div, state_buttons.html_safe, class: 'btn-group')
     end
 
-    def state_label model
+    def state_label(model)
       content_tag(:div, class: state_label_classes(model)) do
         model.current_state
       end
@@ -126,7 +147,7 @@ module StateMachineMixins
 
     private
 
-    def state_label_classes model
+    def state_label_classes(model)
       klass = state_classes[model.current_state] || 'default'
       "label label-#{klass}"
     end
