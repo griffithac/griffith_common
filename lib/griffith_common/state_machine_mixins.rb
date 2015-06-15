@@ -119,7 +119,11 @@ module StateMachineMixins
       end.html_safe
     end
 
-    def state_changer_buttons(models, link_class: 'btn btn-xs btn-default', redirect_to: nil, link_data: {})
+    def state_changer_buttons(models,
+                              remote: true,
+                              redirect_to: nil,
+                              link_class: 'btn btn-xs btn-default',
+                              link_data: {})
       models         = [models].flatten
       primary_model  = models.last
       path_partial   = models.map(&:class).map(&:to_s).map(&:underscore).join('_')
@@ -130,7 +134,7 @@ module StateMachineMixins
           path = eval("event_#{path_partial}_path(*models, format: :js)")
           state_buttons += button_to(event.to_s.titleize,
                                      path,
-                                     remote: true,
+                                     remote: remote,
                                      params: { event: event, redirect: redirect },
                                      class: link_class,
                                      data: link_data)
