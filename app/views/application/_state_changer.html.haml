@@ -1,6 +1,10 @@
 %div{ id: "#{object.class.to_s.underscore}_#{object.id}_states" }
   .row
-    .col-md-10.col-xs-9
-      = state_changer_buttons(object)
     .col-md-2.col-xs-3
-      .pull-right= state_label(object)
+      = state_label(object)
+    .col-md-10.col-xs-9
+      .pull-right
+        = state_changer_buttons(object)
+        = yield :panel_footer_buttons
+        = content_for :panel_footer_buttons, flush: true do
+          = ''

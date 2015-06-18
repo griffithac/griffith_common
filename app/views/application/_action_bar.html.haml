@@ -2,13 +2,13 @@
   - if current_action == "index" && can?(:create,  current_model.classify.constantize)
     - if eval("will_paginate @#{collection ||= params[:controller]}")
       .col-sm-4.col-xs-12
-        = link_to "New #{current_model_title(title ||= nil)}", eval("new_#{current_model}_path"), :method => :get, class: 'btn btn-primary'
+        = link_to "New #{current_model_title(title ||= nil)}", eval("new_#{current_model}_path"), :method => :get, class: 'btn btn-primary loading', data: { loading_text: 'Loading...' }
         = yield
       - if /index/ =~ current_action && @view_type != 'Calendar' then
         = render 'pagination_bar'
     - else
       .col-xs-12
-        = link_to "New #{current_model_title(title ||= nil)}", eval("new_#{current_model}_path"), :method => :get, class: 'btn btn-primary'
+        = link_to "New #{current_model_title(title ||= nil)}", eval("new_#{current_model}_path"), :method => :get, class: 'btn btn-primary loading', data: { loading_text: 'Loading...' }
         = yield
   - elsif %w[show new create edit update event].include?(current_action)  
     .col-xs-12
