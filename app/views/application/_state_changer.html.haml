@@ -5,6 +5,7 @@
     .col-md-10.col-xs-9
       .pull-right
         = state_changer_buttons(object)
-        = yield :panel_footer_buttons
-        = content_for :panel_footer_buttons, flush: true do
+        = yield if block_given?
+        = yield :state_changer_addon
+        = content_for :state_changer_addon, flush: true do
           = ''
