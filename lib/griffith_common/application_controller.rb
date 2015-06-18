@@ -12,7 +12,11 @@ module GriffithCommon
       if (MIN_ROWS..MAX_ROWS).include? params[:per_page].to_i
         params[:per_page]
       else
-        DEFAULT_ROWS
+        if current_user.try(:per_page).to_i > 0
+          current_user.per_page
+        else
+          DEFAULT_ROWS
+        end
       end
     end
 
