@@ -91,7 +91,7 @@ module StateMachineMixins
       set_object
       respond_to do |format|
         format.js do
-          @object .call_event(params)
+          @object.call_event(params)
         end
       end
     end
@@ -121,6 +121,7 @@ module StateMachineMixins
 
     def state_changer_buttons(models,
                               remote: true,
+                              path: nil,
                               redirect_to: nil,
                               link_class: 'btn btn-xs btn-default',
                               link_data: {})
@@ -128,11 +129,12 @@ module StateMachineMixins
       primary_model  = models.last
       path_partial   = models.map(&:class).map(&:to_s).map(&:underscore).join('_')
       state_buttons = ''
+      redirect = redirect_to.present? ? ", redirect_to: '#{redirect_to}'" : ''
+      format = remote ? ', format: :js' : ''
+      path ||= eval("event_#{path_partial}_path(*models#{format})")
+
       primary_model.state_events.each do |event|
         if eval("primary_model.can_#{event.to_s}?")
-          redirect = redirect_to.present? ? ", redirect_to: '#{redirect_to}'" : ''
-          format = ', format: :js' if remote
-          path = eval("event_#{path_partial}_path(*models#{format})")
           state_buttons += button_to(event.to_s.titleize,
                                      path,
                                      remote: remote,
