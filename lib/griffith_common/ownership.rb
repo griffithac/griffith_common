@@ -57,7 +57,7 @@ module Ownership
   module Helper
     def creator_time_stamp model, style = :short
       return unless model
-      if model.creator
+      if model.creator.present?
         time_stamp model.created_at, model.creator, style
       else
         time_stamp model.created_at
@@ -66,7 +66,7 @@ module Ownership
 
     def updater_time_stamp model, style = :short
       return unless model
-      if model.updater
+      if model.updater.present?
         time_stamp model.updated_at, model.updater, style
       else
         time_stamp model.updated_at
