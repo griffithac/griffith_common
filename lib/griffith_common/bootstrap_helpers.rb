@@ -54,7 +54,7 @@ module GriffithCommon
                                      type: 'button',
                                      data: { dismiss: 'modal' },
                                      'aria-hidden' => true)
-              header << content_tag(:h4, class: 'modal-title',
+              header << content_tag(:h4, class: 'modal-title left',
                                          id: "#{ id }") do
                 "#{ title }".html_safe
               end
