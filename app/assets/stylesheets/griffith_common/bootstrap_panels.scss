@@ -1,4 +1,8 @@
 .panel-footer { 
-  padding: 9px;
+  padding: 6px 9px 6px 9px;
+  .btn, .label, input {
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
 }
 
