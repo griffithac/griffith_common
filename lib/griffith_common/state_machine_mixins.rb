@@ -178,6 +178,7 @@ module StateMachineMixins
         'Inactive'               => 'default',
         'Inactive Client'        => 'default',
         'Incomplete'             => 'warning',
+        'Inventory Reduction'    => 'purple',
         'Invoiced'               => 'default',
         'Liquidation'            => 'warning',
         'Measure Needed'         => 'warning',
