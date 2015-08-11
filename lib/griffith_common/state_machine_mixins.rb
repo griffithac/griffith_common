@@ -162,6 +162,7 @@ module StateMachineMixins
     def state_classes
       {
         'Active'                 => 'info',
+        'Alternate'              => 'purple',
         'Archived'               => 'default',
         'Approved'               => 'success',
         'Available'              => 'success',
