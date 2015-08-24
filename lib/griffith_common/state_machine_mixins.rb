@@ -204,6 +204,7 @@ module StateMachineMixins
         'Ready For Will Call'    => 'purple',
         'Received'               => 'success',
         'Rejected'               => 'warning',
+        'Remeasure Meeded'       => 'warning',
         'Requires Clarification' => 'info',
         'Reserved'               => 'warning',
         'Routed For Delivery'    => 'warning',
