@@ -216,6 +216,7 @@ module GriffithCommon
     end
 
     def full_address address
+      return unless address
       content_tag :div do
         content_tag( :div, address.line1 ) +
         ( address.line2 ? content_tag( :div, address.line2 ) : " " ) +
