@@ -150,7 +150,7 @@ module GriffithCommon
     def index_show_button(models)
       models         = [models].flatten
       primary_model  = models.last
-      path_partial   = models.map(&:class).map(&:to_s).map(&:underscore).join('_')
+      path_partial   = models.map(&:model_name).map(&:name).map(&:to_s).map(&:underscore).join('_')
       if can? :read, primary_model
         link_to(icon('external-link'),
                 send("#{path_partial}_path", *models),
@@ -162,7 +162,7 @@ module GriffithCommon
     def index_edit_button(models)
       models         = [models].flatten
       primary_model  = models.last
-      path_partial   = models.map(&:class).map(&:to_s).map(&:underscore).join('_')
+      path_partial   = models.map(&:model_name).map(&:name).map(&:to_s).map(&:underscore).join('_')
       if can? :edit, primary_model
         link_to(icon(:edit),
                 send("edit_#{path_partial}_path", *models),

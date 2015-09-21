@@ -127,7 +127,7 @@ module StateMachineMixins
                               link_data: {})
       models         = [models].flatten
       primary_model  = models.last
-      path_partial   = models.map(&:class).map(&:to_s).map(&:underscore).join('_')
+      path_partial   = models.map(&:model_name).map(&:name).map(&:to_s).map(&:underscore).join('_')
       state_buttons = ''
       redirect = redirect_to.present? ? ", redirect_to: '#{redirect_to}'" : ''
       format = remote ? ', format: :js' : ''
