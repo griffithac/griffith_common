@@ -155,11 +155,19 @@ module StateMachineMixins
     private
 
     def state_label_classes(model)
-      klass = state_classes[model.current_state] || 'default'
-      "label label-#{klass}"
+      klass = if model.respond_to?(:state_label_class)
+                model.state_label_class ||
+                  state_classes[model.current_state]
+              else
+                state_classes[model.current_state]
+              end
+
+      "label label-#{klass || 'default'}"
     end
 
     def state_classes
+      warn "[DEPRECATION] StateMachineMixins##{__method__} is deprecated. " \
+           "Please add `#state_label_class to your model or decorator instead."
       {
         'Active'                 => 'info',
         'Actual Needed'          => 'warning',
