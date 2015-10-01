@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('bootstrap-sass', ["~> 3.3.5"])
   s.add_runtime_dependency('autoprefixer-rails')
   s.add_runtime_dependency('font-awesome-rails')
-  s.add_runtime_dependency('select2-rails')
+  s.add_runtime_dependency('select2-rails', '3.5.9.3')
   s.add_runtime_dependency('bootstrap-datepicker-rails')
   s.add_runtime_dependency('simple_form')
   s.add_runtime_dependency('state_machine')
