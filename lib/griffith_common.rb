@@ -6,7 +6,7 @@ require 'font-awesome-rails'
 require 'simple_form'
 require 'will_paginate'
 require 'select2-rails'
-require 'state_machine'
+# require 'state_machine'
 
 module GriffithCommon
   if defined?(Rails)
