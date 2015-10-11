@@ -18,14 +18,5 @@ Gem::Specification.new do |s|
   s.required_ruby_version     = Gem::Requirement.new("~> 2.0")
   s.rubygems_version          = "2.2.2"
   s.summary                   = "This gem contains all the common code use by Griffith Industries, Inc. It is licensed as MIT.  Hopefully it will be useful to others."
-
-  s.add_runtime_dependency('will_paginate', ["~> 3.0.6"])
-  s.add_runtime_dependency('bootstrap-sass', ["~> 3.3.5"])
-  s.add_runtime_dependency('autoprefixer-rails')
-  s.add_runtime_dependency('font-awesome-rails')
-  s.add_runtime_dependency('bootstrap-datepicker-rails')
-  s.add_runtime_dependency('simple_form')
-  s.add_development_dependency('sqlite3', [">= 0"])
-  s.add_development_dependency('pry', [">= 0"])
 end
 

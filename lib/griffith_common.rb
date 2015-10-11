@@ -1,13 +1,3 @@
-# Require all gems here
-require 'bootstrap-sass'
-require 'autoprefixer-rails'
-require 'bootstrap-datepicker-rails'
-require 'font-awesome-rails'
-require 'simple_form'
-require 'will_paginate'
-require 'select2-rails'
-# require 'state_machine'
-
 module GriffithCommon
   if defined?(Rails)
     require 'griffith_common/table_builder'
