@@ -5,7 +5,6 @@ require "griffith_common/bootstrap_helpers"
 module GriffithCommon
   module WillPaginateTwitterBootstrap
     class Renderer < WillPaginate::ActionView::LinkRenderer
-
       include GriffithCommon::BootstrapHelpers::Icon
 
       ELLIPSIS = '&hellip;'
@@ -54,7 +53,6 @@ module GriffithCommon
           tag('li', tag('span', text), class: "%s disabled" % classname)
         end
       end
-
     end
 
     class AjaxRenderer < WillPaginateTwitterBootstrap::Renderer
@@ -76,7 +74,6 @@ module GriffithCommon
       end
     end
 
-
     module Helper
 
       # set default renderer
@@ -95,8 +92,6 @@ module GriffithCommon
         will_paginate(collection, options.merge( renderer: GriffithCommon::WillPaginateTwitterBootstrap::AjaxRenderer,
                                                  class:    'ajax-pagination' ) )
       end
-
     end
-
   end
 end
