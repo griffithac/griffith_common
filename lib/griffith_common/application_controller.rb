@@ -61,7 +61,7 @@ module GriffithCommon
     def current_resource
       request_path =
         request.path.sub(/\..*/, '').split('/').reject do |p|
-          ['new', 'edit', 'event', ''].include?(p)
+          ['new', 'edit', 'event', 'geocode', ''].include?(p)
         end
 
       case request_path.count
